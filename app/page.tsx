@@ -9,11 +9,10 @@ export default function Home() {
         crossColor="#999999"
         borderColor="#E8E8E8"
         cellSize={30}
-        hoverColor={"#0192FF"}
+        hoverColor={"#60BE60"}
         borderWidth={0.5}
         crossWidth={0.6}
       />
-
       <NavDock />
     </>
   );
