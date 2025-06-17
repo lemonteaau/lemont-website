@@ -13,19 +13,25 @@ const items = [
   {
     icon: <VscHome size={22} className="text-white" />,
     label: "Home",
-    onClick: () => alert("Home!"),
+    onClick: () => {
+      window.location.href = "/";
+    },
   },
 
   {
     icon: <IoBulbOutline size={22} className="text-white" />,
     label: "Projects",
-    onClick: () => alert("Projects!"),
+    onClick: () => {
+      window.location.href = "/projects";
+    },
   },
 
   {
     icon: <IoMailOutline size={22} className="text-white" />,
     label: "Contact",
-    onClick: () => alert("Contact!"),
+    onClick: () => {
+      window.location.href = "mailto:terrycheng2k@outlook.com";
+    },
   },
 
   {
