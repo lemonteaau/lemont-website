@@ -46,12 +46,17 @@ const items = [
 
 export default function NavDock() {
   return (
-    <Dock
-      items={items}
-      panelHeight={68}
-      baseItemSize={50}
-      magnification={70}
-      separators={[2]}
-    />
+    <div className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none">
+      <div className="relative pointer-events-auto">
+        <Dock
+          items={items}
+          panelHeight={68}
+          baseItemSize={50}
+          magnification={70}
+          separators={[2]}
+          className="backdrop-blur-sm"
+        />
+      </div>
+    </div>
   );
 }
