@@ -9,6 +9,7 @@ import {
   type SpringOptions,
   AnimatePresence,
 } from "framer-motion";
+import Link from "next/link";
 import React, {
   Children,
   cloneElement,
@@ -26,8 +27,12 @@ export type DockItemData = {
   icon: React.ReactNode;
   /** The label text shown on hover */
   label: React.ReactNode;
-  /** Callback function executed when the item is clicked */
-  onClick: () => void;
+  /** Next.js route href for internal links */
+  href?: string;
+  /** Callback function executed when the item is clicked (for external links) */
+  onClick?: () => void;
+  /** Whether this is an external link */
+  isExternal?: boolean;
   /** Optional CSS class name for custom styling */
   className?: string;
 };
@@ -66,7 +71,9 @@ export type DockProps = {
 type DockItemProps = {
   className?: string;
   children: React.ReactNode;
+  href?: string;
   onClick?: () => void;
+  isExternal?: boolean;
   mouseX: MotionValue;
   spring: SpringOptions;
   distance: number;
@@ -77,7 +84,9 @@ type DockItemProps = {
 function DockItem({
   children,
   className = "",
+  href,
   onClick,
+  isExternal = false,
   mouseX,
   spring,
   distance,
@@ -102,7 +111,9 @@ function DockItem({
   );
   const size = useSpring(targetSize, spring);
 
-  return (
+  const itemClassName = `relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${className}`;
+
+  const itemContent = (
     <motion.div
       ref={ref}
       style={{
@@ -113,8 +124,7 @@ function DockItem({
       onHoverEnd={() => isHovered.set(0)}
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
-      onClick={onClick}
-      className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${className}`}
+      className={itemClassName}
       tabIndex={0}
       role="button"
       aria-haspopup="true"
@@ -124,6 +134,28 @@ function DockItem({
         cloneElement(child as React.ReactElement, { isHovered })
       )}
     </motion.div>
+  );
+
+  // For internal links, wrap with Next.js Link
+  if (href && !isExternal) {
+    return (
+      <Link href={href} className="inline-block">
+        {itemContent}
+      </Link>
+    );
+  }
+
+  // For external links or items with onClick handlers
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      className="inline-block cursor-pointer"
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+    >
+      {itemContent}
+    </a>
   );
 }
 
@@ -224,9 +256,9 @@ function DockSeparator({
  * @example
  * ```tsx
  * const items = [
- *   { icon: <HomeIcon />, label: "Home", onClick: () => {} },
- *   { icon: <SettingsIcon />, label: "Settings", onClick: () => {} },
- *   { icon: <ProfileIcon />, label: "Profile", onClick: () => {} }
+ *   { icon: <HomeIcon />, label: "Home", href: "/" },
+ *   { icon: <SettingsIcon />, label: "Settings", href: "/settings" },
+ *   { icon: <ProfileIcon />, label: "Profile", onClick: () => {}, isExternal: true }
  * ];
  *
  * <Dock
@@ -270,7 +302,9 @@ export default function Dock({
       elements.push(
         <DockItem
           key={`item-${index}`}
+          href={item.href}
           onClick={item.onClick}
+          isExternal={item.isExternal}
           className={item.className}
           mouseX={mouseX}
           spring={spring}

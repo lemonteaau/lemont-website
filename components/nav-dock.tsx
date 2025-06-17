@@ -13,44 +13,34 @@ const items = [
   {
     icon: <VscHome size={22} className="text-white" />,
     label: "Home",
-    onClick: () => {
-      window.location.href = "/";
-    },
+    href: "/",
   },
 
   {
     icon: <IoBulbOutline size={22} className="text-white" />,
     label: "Projects",
-    onClick: () => {
-      window.location.href = "/projects";
-    },
+    href: "/projects",
   },
 
   {
     icon: <IoMailOutline size={22} className="text-white" />,
     label: "Contact",
-    onClick: () => {
-      window.location.href = "mailto:terrycheng2k@outlook.com";
-    },
+    isExternal: true,
+    href: "mailto:terrycheng2k@outlook.com",
   },
 
   {
     icon: <IoLogoLinkedin size={22} className="text-white" />,
     label: "Linkedin",
-    onClick: () => {
-      window.open(
-        "https://www.linkedin.com/in/terry-cheng-789972274",
-        "_blank"
-      );
-    },
+    isExternal: true,
+    href: "https://www.linkedin.com/in/terry-cheng-789972274",
   },
 
   {
     icon: <IoLogoGithub size={22} className="text-white" />,
     label: "Github",
-    onClick: () => {
-      window.open("https://github.com/lemonteaau", "_blank");
-    },
+    isExternal: true,
+    href: "https://github.com/lemonteaau",
   },
 ];
 
