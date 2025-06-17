@@ -7,16 +7,15 @@ import {
   useSpring,
   useTransform,
   type SpringOptions,
-  AnimatePresence,
 } from "framer-motion";
 import Link from "next/link";
 import React, {
   Children,
   cloneElement,
-  useEffect,
   useMemo,
   useRef,
-  useState,
+  useLayoutEffect,
+  useCallback,
 } from "react";
 
 /**
@@ -96,12 +95,32 @@ function DockItem({
   const ref = useRef<HTMLDivElement>(null);
   const isHovered = useMotionValue(0);
 
-  const mouseDistance = useTransform(mouseX, (val) => {
-    const rect = ref.current?.getBoundingClientRect() ?? {
-      x: 0,
-      width: baseItemSize,
+  // Cache element position to avoid getBoundingClientRect abuse
+  const elementRect = useRef({ x: 0, width: baseItemSize });
+
+  // Update cached position when layout changes
+  const updateElementPosition = useCallback(() => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      elementRect.current = { x: rect.x, width: rect.width };
+    }
+  }, []);
+
+  useLayoutEffect(() => {
+    updateElementPosition();
+
+    // Update position on window resize
+    const handleResize = () => updateElementPosition();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
-    return val - rect.x - baseItemSize / 2;
+  }, [updateElementPosition]);
+
+  // Use cached values instead of getBoundingClientRect in transform
+  const mouseDistance = useTransform(mouseX, (val) => {
+    return val - elementRect.current.x - elementRect.current.width / 2;
   });
 
   const targetSize = useTransform(
@@ -124,6 +143,7 @@ function DockItem({
       onHoverEnd={() => isHovered.set(0)}
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
+      onLayoutAnimationStart={updateElementPosition}
       className={itemClassName}
       tabIndex={0}
       role="button"
@@ -136,7 +156,6 @@ function DockItem({
     </motion.div>
   );
 
-  // For internal links, wrap with Next.js Link
   if (href && !isExternal) {
     return (
       <Link href={href} className="inline-block">
@@ -145,7 +164,6 @@ function DockItem({
     );
   }
 
-  // For external links or items with onClick handlers
   return (
     <a
       href={href}
@@ -169,31 +187,23 @@ type DockLabelProps = {
 
 function DockLabel({ children, className = "", ...rest }: DockLabelProps) {
   const { isHovered } = rest as { isHovered: MotionValue<number> };
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = isHovered.on("change", (latest) => {
-      setIsVisible(latest === 1);
-    });
-    return () => unsubscribe();
-  }, [isHovered]);
+  const opacity = useTransform(isHovered, [0, 1], [0, 1]);
+  const y = useTransform(isHovered, [0, 1], [0, -10]);
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: -10 }}
-          exit={{ opacity: 0, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className={`${className} absolute -top-6 left-1/2 w-fit whitespace-pre rounded-md border border-neutral-700 bg-[#060010] px-2 py-0.5 text-xs text-white`}
-          role="tooltip"
-          style={{ x: "-50%" }}
-        >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <motion.div
+      initial={false}
+      style={{
+        opacity,
+        y,
+        x: "-50%",
+      }}
+      className={`${className} absolute -top-6 left-1/2 w-fit whitespace-pre rounded-md border border-neutral-700 bg-[#060010] px-2 py-0.5 text-xs text-white pointer-events-none`}
+      role="tooltip"
+    >
+      {children}
+    </motion.div>
   );
 }
 
@@ -290,12 +300,12 @@ export default function Dock({
 
   const maxHeight = useMemo(
     () => Math.max(dockHeight, magnification + magnification / 2 + 4),
-    [magnification]
+    [dockHeight, magnification]
   );
   const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
   const height = useSpring(heightRow, spring);
 
-  const renderItemsWithSeparators = () => {
+  const renderedItems = useMemo(() => {
     const elements: React.ReactNode[] = [];
 
     items.forEach((item, index) => {
@@ -330,7 +340,17 @@ export default function Dock({
     });
 
     return elements;
-  };
+  }, [
+    items,
+    separators,
+    mouseX,
+    spring,
+    distance,
+    magnification,
+    baseItemSize,
+    separatorHeight,
+    separatorGap,
+  ]);
 
   return (
     <motion.div
@@ -351,7 +371,7 @@ export default function Dock({
         role="toolbar"
         aria-label="Application dock"
       >
-        {renderItemsWithSeparators()}
+        {renderedItems}
       </motion.div>
     </motion.div>
   );
