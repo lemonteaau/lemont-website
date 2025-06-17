@@ -1,5 +1,6 @@
 import NavDock from "@/components/nav-dock";
 import DiamondGrid from "@/components/ui/diamond-grid";
+import Hero from "@/components/hero";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         borderWidth={0.5}
         crossWidth={0.6}
       />
+      <Hero />
       <NavDock />
     </>
   );
