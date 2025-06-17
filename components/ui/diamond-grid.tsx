@@ -23,8 +23,8 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
   borderWidth = 0.5,
   crossWidth = 0.5,
 }) => {
-  const totalGroups = 2000;
-  const cols = 50;
+  const totalGroups = 4000;
+  const cols = 80;
 
   const getCellBorders = (cellIndex: number, groupIndex: number) => {
     const groupRow = Math.floor(groupIndex / cols);
@@ -114,7 +114,7 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
             height: "200vh",
             display: "grid",
             gridTemplateColumns: `repeat(${cols}, ${cellSize * 2}px)`,
-            gridTemplateRows: `repeat(40, ${cellSize * 2}px)`,
+            gridTemplateRows: `repeat(50, ${cellSize * 2}px)`,
             transform:
               "translate(-50%, -50%) skewX(-48deg) skewY(14deg) scaleX(1.8) scale(0.8)",
             transformOrigin: "center",
