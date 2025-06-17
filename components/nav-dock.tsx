@@ -11,33 +11,33 @@ import {
 
 const items = [
   {
-    icon: <VscHome size={22} className="text-white" />,
+    icon: <VscHome size={24} className="text-white/90" />,
     label: "Home",
     href: "/",
   },
 
   {
-    icon: <IoBulbOutline size={22} className="text-white" />,
+    icon: <IoBulbOutline size={24} className="text-white/90" />,
     label: "Projects",
     href: "/projects",
   },
 
   {
-    icon: <IoMailOutline size={22} className="text-white" />,
+    icon: <IoMailOutline size={24} className="text-white/90" />,
     label: "Contact",
     isExternal: true,
     href: "mailto:terrycheng2k@outlook.com",
   },
 
   {
-    icon: <IoLogoLinkedin size={22} className="text-white" />,
+    icon: <IoLogoLinkedin size={24} className="text-white/90" />,
     label: "Linkedin",
     isExternal: true,
     href: "https://www.linkedin.com/in/terry-cheng-789972274",
   },
 
   {
-    icon: <IoLogoGithub size={22} className="text-white" />,
+    icon: <IoLogoGithub size={24} className="text-white/90" />,
     label: "Github",
     isExternal: true,
     href: "https://github.com/lemonteaau",
@@ -54,7 +54,6 @@ export default function NavDock() {
           baseItemSize={50}
           magnification={70}
           separators={[2]}
-          className="backdrop-blur-sm"
         />
       </div>
     </div>

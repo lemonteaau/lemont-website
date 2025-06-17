@@ -120,7 +120,7 @@ function DockItem({
 
   // Use cached values instead of getBoundingClientRect in transform
   const mouseDistance = useTransform(mouseX, (val) => {
-    return val - elementRect.current.x - elementRect.current.width / 2;
+    return val - elementRect.current.x - baseItemSize / 2;
   });
 
   const targetSize = useTransform(
@@ -130,7 +130,7 @@ function DockItem({
   );
   const size = useSpring(targetSize, spring);
 
-  const itemClassName = `relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${className}`;
+  const itemClassName = `relative inline-flex items-center justify-center rounded-full bg-white/10 border border-white/20 shadow-md ${className}`;
 
   const itemContent = (
     <motion.div
@@ -144,6 +144,7 @@ function DockItem({
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
       onLayoutAnimationStart={updateElementPosition}
+      onAnimationStart={updateElementPosition}
       className={itemClassName}
       tabIndex={0}
       role="button"
@@ -199,7 +200,7 @@ function DockLabel({ children, className = "", ...rest }: DockLabelProps) {
         y,
         x: "-50%",
       }}
-      className={`${className} absolute -top-6 left-1/2 w-fit whitespace-pre rounded-md border border-neutral-700 bg-[#060010] px-2 py-0.5 text-xs text-white pointer-events-none`}
+      className={`${className} absolute -top-6 left-1/2 w-fit whitespace-pre rounded-md border border-white/20 bg-black/90 px-2 py-1 text-xs text-white shadow-md pointer-events-none`}
       role="tooltip"
     >
       {children}
@@ -250,7 +251,7 @@ function DockSeparator({
       }}
     >
       <div
-        className="bg-neutral-600 rounded-full"
+        className="bg-white/30 rounded-full"
         style={{
           width: "1px",
           height: `${height}px`,
@@ -366,7 +367,7 @@ export default function Dock({
           isHovered.set(0);
           mouseX.set(Infinity);
         }}
-        className={`${className} absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-end w-fit gap-4 rounded-2xl border-neutral-700 border-2 pb-2 px-4`}
+        className={`${className} absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-end w-fit gap-4 rounded-2xl bg-black/50 border border-white/10 pb-2 px-4 shadow-lg`}
         style={{ height: panelHeight }}
         role="toolbar"
         aria-label="Application dock"
