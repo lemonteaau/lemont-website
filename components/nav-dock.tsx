@@ -1,32 +1,50 @@
 "use client";
 
 import Dock from "@/components/ui/dock";
-import { VscHome, VscSettingsGear } from "react-icons/vsc";
-import { IoBulbOutline, IoMailOutline } from "react-icons/io5";
+import { VscHome } from "react-icons/vsc";
+import {
+  IoBulbOutline,
+  IoMailOutline,
+  IoLogoLinkedin,
+  IoLogoGithub,
+} from "react-icons/io5";
 
 const items = [
   {
-    icon: <VscHome size={18} className="text-white" />,
+    icon: <VscHome size={22} className="text-white" />,
     label: "Home",
     onClick: () => alert("Home!"),
   },
 
   {
-    icon: <IoBulbOutline size={18} className="text-white" />,
+    icon: <IoBulbOutline size={22} className="text-white" />,
     label: "Projects",
     onClick: () => alert("Projects!"),
   },
 
   {
-    icon: <IoMailOutline size={18} className="text-white" />,
+    icon: <IoMailOutline size={22} className="text-white" />,
     label: "Contact",
     onClick: () => alert("Contact!"),
   },
 
   {
-    icon: <VscSettingsGear size={18} className="text-white" />,
-    label: "Settings",
-    onClick: () => alert("Settings!"),
+    icon: <IoLogoLinkedin size={22} className="text-white" />,
+    label: "Linkedin",
+    onClick: () => {
+      window.open(
+        "https://www.linkedin.com/in/terry-cheng-789972274",
+        "_blank"
+      );
+    },
+  },
+
+  {
+    icon: <IoLogoGithub size={22} className="text-white" />,
+    label: "Github",
+    onClick: () => {
+      window.open("https://github.com/lemonteaau", "_blank");
+    },
   },
 ];
 
