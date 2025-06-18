@@ -51,14 +51,16 @@ export default function Hero() {
         </p>
       </div>
       <div className="transform -skew-x-24 skew-y-7">
-        <div ref={logoRef} className="space-y-4 shadow-2xl">
+        <div
+          ref={logoRef}
+          className="w-48 sm:w-64 aspect-[1/1] relative shadow-2xl"
+        >
           <Image
             src={logo}
             alt="logo"
-            width={100}
-            height={100}
-            className="max-w-3xs sm:max-w-2xs"
-            layout="responsive"
+            fill
+            placeholder="blur"
+            className="object-contain"
           />
         </div>
       </div>
