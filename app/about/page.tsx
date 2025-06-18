@@ -5,6 +5,7 @@ import gsap from "gsap";
 import NavDock from "@/components/nav-dock";
 import DiamondGrid from "@/components/ui/diamond-grid";
 import Image from "next/image";
+import profile from "@/public/logo.png";
 
 export default function AboutPage() {
   const imageRef = useRef(null);
@@ -50,14 +51,15 @@ export default function AboutPage() {
         crossWidth={0.6}
       />
       <div className="container mx-auto px-4 py-24 sm:py-32">
-        <div className="max-w-4xl mx-auto bg-background/80 backdrop-blur-sm p-8 rounded-lg shadow-lg border border-border">
+        <div className="max-w-4xl mx-auto bg-background/80 backdrop-blur-sm p-8 shadow-lg border border-border">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div ref={imageRef} className="w-48 h-48 relative flex-shrink-0">
               <Image
-                src="/logo.png"
+                src={profile}
                 alt="Profile picture"
                 fill
-                className="object-cover rounded-full shadow-md"
+                placeholder="blur"
+                className="object-cover"
               />
             </div>
             <div className="text-center md:text-left">
