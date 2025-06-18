@@ -6,13 +6,10 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="fixed inset-0 z-10 flex flex-col sm:flex-row items-center justify-center pointer-events-none gap-16">
+    <div className="fixed inset-0 z-10 flex flex-col sm:flex-row items-center justify-center pointer-events-none gap-20">
       <div
-        className="text-center pointer-events-none"
-        style={{
-          transform: "skewX(-24deg) skewY(7deg)",
-          transformOrigin: "center",
-        }}
+        className="text-center pointer-events-none transform -skew-x-24 skew-y-7"
+        id="hero-text"
       >
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
@@ -31,12 +28,7 @@ export default function Hero() {
           Full-Stack Developer
         </motion.p>
       </div>
-      <div
-        style={{
-          transform: "skewX(-24deg) skewY(7deg)",
-          transformOrigin: "center",
-        }}
-      >
+      <div className="transform -skew-x-24 skew-y-7" id="hero-image">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
