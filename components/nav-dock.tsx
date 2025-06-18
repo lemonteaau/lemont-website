@@ -7,6 +7,7 @@ import {
   IoMailOutline,
   IoLogoLinkedin,
   IoLogoGithub,
+  IoPersonOutline,
 } from "react-icons/io5";
 
 const items = [
@@ -20,6 +21,11 @@ const items = [
     icon: <IoBulbOutline size={24} className="text-white/90" />,
     label: "Projects",
     href: "/projects",
+  },
+  {
+    icon: <IoPersonOutline size={24} className="text-white/90" />,
+    label: "About",
+    href: "/about",
   },
 
   {
