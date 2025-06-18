@@ -96,6 +96,7 @@ export default function NavDock() {
           magnification={70}
           separators={[2]}
           separatorGap={1}
+          distance={150}
         />
       </div>
     </div>
