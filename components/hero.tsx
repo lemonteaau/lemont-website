@@ -12,7 +12,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ textShadow: "4px 6px 20px rgba(0, 0, 0, 0.2)" }}
+          style={{ textShadow: "8px 8px 10px rgba(0, 0, 0, 0.2)" }}
           className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-foreground mb-6"
         >
           Terry
@@ -21,7 +21,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ textShadow: "4px 6px 20px rgba(0, 0, 0, 0.2)" }}
+          style={{ textShadow: "8px 8px 10px rgba(0, 0, 0, 0.2)" }}
           className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
         >
           Full-Stack Developer
