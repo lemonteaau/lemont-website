@@ -28,26 +28,8 @@ export default function Hero() {
 
   return (
     <div className="fixed inset-0 z-10 flex flex-col sm:flex-row items-center justify-center pointer-events-none gap-20">
-      <div className="text-center transform -skew-x-24 skew-y-7">
-        <div className="pointer-events-auto cursor-pointer">
-          <h1
-            ref={titleRef}
-            style={{ textShadow: "8px 8px 10px rgba(0, 0, 0, 0.2)" }}
-            className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-foreground mb-6 pointer-events-none"
-          >
-            Terry
-          </h1>
-          <p
-            ref={subtitleRef}
-            style={{ textShadow: "8px 8px 10px rgba(0, 0, 0, 0.2)" }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed pointer-events-none"
-          >
-            Full-Stack Developer
-          </p>
-        </div>
-      </div>
-      <div className="transform -skew-x-24 skew-y-7">
-        <div className="pointer-events-auto cursor-pointer">
+      <div className="order-1 sm:order-2 pointer-events-none cursor-pointer">
+        <div className="transform -skew-x-24 skew-y-7 translate-x-22 -translate-y-7 sm:translate-y-16 sm:translate-x-0">
           <div
             ref={logoRef}
             className="w-48 sm:w-64 aspect-[1/1] relative shadow-2xl pointer-events-none"
@@ -60,6 +42,25 @@ export default function Hero() {
               className="object-contain"
             />
           </div>
+        </div>
+      </div>
+
+      <div className="order-2 sm:order-1 text-center pointer-events-none cursor-pointer">
+        <div className="transform -skew-x-24 skew-y-7 -translate-y-18.5 translate-x-2 sm:translate-y-4 sm:translate-x-0">
+          <h1
+            ref={titleRef}
+            style={{ textShadow: "8px 8px 10px rgba(0, 0, 0, 0.2)" }}
+            className="text-9xl lg:text-[12rem] font-bold text-foreground mb-6 pointer-events-none"
+          >
+            Terry
+          </h1>
+          <p
+            ref={subtitleRef}
+            style={{ textShadow: "8px 8px 10px rgba(0, 0, 0, 0.2)" }}
+            className="text-2xl max-w-2xl mx-auto leading-relaxed pointer-events-none"
+          >
+            Full-Stack Developer
+          </p>
         </div>
       </div>
     </div>
