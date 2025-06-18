@@ -116,7 +116,7 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
             gridTemplateColumns: `repeat(${cols}, ${cellSize * 2}px)`,
             gridTemplateRows: `repeat(50, ${cellSize * 2}px)`,
             transform:
-              "translate(-50%, -50%) skewX(-48deg) skewY(14deg) scaleX(1.8) scale(0.8)",
+              "translate(-50%, -50%) skewX(-24deg) skewY(7deg) scaleX(1.8) scale(0.8)",
             transformOrigin: "center",
           }}
         >
