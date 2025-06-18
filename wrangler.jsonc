@@ -1,6 +1,6 @@
 {
   "main": ".open-next/worker.js",
-  "name": "lemont-website",
+  "name": "mysite",
   "compatibility_date": "2025-06-18",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
