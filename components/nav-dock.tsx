@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Dock from "@/components/ui/dock";
 import { VscHome } from "react-icons/vsc";
 import {
@@ -9,6 +10,7 @@ import {
   IoLogoGithub,
   IoPersonOutline,
 } from "react-icons/io5";
+import { cn } from "@/lib/utils";
 
 const items = [
   {
@@ -51,8 +53,41 @@ const items = [
 ];
 
 export default function NavDock() {
+  const [isDockVisible, setIsDockVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth >= 768) {
+        setIsDockVisible(true);
+        return;
+      }
+
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsDockVisible(false);
+      } else {
+        setIsDockVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 pointer-events-none">
+    <div
+      className={cn(
+        "fixed bottom-0 left-0 right-0 z-50 pointer-events-none transition-transform duration-300 ease-in-out",
+        { "translate-y-full": !isDockVisible }
+      )}
+    >
       <div className="relative pointer-events-auto">
         <Dock
           items={items}
