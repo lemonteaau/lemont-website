@@ -7,62 +7,63 @@ import {
   SiReact,
   SiTypescript,
   SiTailwindcss,
-  SiNodedotjs,
   SiPython,
 } from "react-icons/si";
+import Image from "next/image";
+import snapsnap from "@/public/snapsnappro_logo.svg";
 
 const projects = [
   {
-    title: "E-commerce Platform",
+    title: "Snapsnap.pro Bundle Calculator",
     description:
-      "A full-stack e-commerce solution with modern UI and secure payment processing.",
+      "A Next.js app for Marvel Snap players with ~250 daily active users. Features responsive UI, internationalization with Chinese support, and smooth animations.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
     ],
-    github: "https://github.com/lemonteaau/ecommerce-platform",
-    demo: "https://ecommerce-demo.vercel.app",
-    image: "/api/placeholder/400/250",
+    github: "https://github.com/lemonteaau/snapsnap.pro",
+    demo: "https://snapsnap.pro/",
+    image: snapsnap,
   },
   {
-    title: "Task Management App",
+    title: "Personal Website",
     description:
-      "A collaborative task management application with real-time updates and team features.",
+      "A pixel-perfect personal website with advanced features like dynamic typewriter intro, smooth animations using GSAP, and custom tooltip components.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
+      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+    ],
+    github: "https://github.com/lemonteaau",
+    demo: "https://lemontea.xyz/",
+    image: "",
+  },
+  {
+    title: "Lab Management Tool",
+    description:
+      "A scheduling tool for University of Adelaide labs. Features efficient data structures, RESTful API integration, and comprehensive test coverage.",
     tech: [
       { name: "React", icon: <SiReact className="w-5 h-5" /> },
-      { name: "Node.js", icon: <SiNodedotjs className="w-5 h-5" /> },
-      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
-    ],
-    github: "https://github.com/lemonteaau/task-manager",
-    demo: "https://task-manager-demo.vercel.app",
-    image: "/api/placeholder/400/250",
-  },
-  {
-    title: "Data Analytics Dashboard",
-    description:
-      "An interactive dashboard for visualizing complex data sets with beautiful charts.",
-    tech: [
       { name: "Python", icon: <SiPython className="w-5 h-5" /> },
-      { name: "React", icon: <SiReact className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
     ],
-    github: "https://github.com/lemonteaau/data-dashboard",
-    demo: "https://analytics-demo.vercel.app",
-    image: "/api/placeholder/400/250",
+    github: "https://github.com/lemonteaau",
+    demo: "#",
+    image: "",
   },
   {
-    title: "AI Chat Assistant",
+    title: "Enterprise Event Management System",
     description:
-      "An intelligent chat assistant powered by modern AI with natural conversation flow.",
+      "MVP for enterprise event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
     ],
-    github: "https://github.com/lemonteaau/ai-chat",
-    demo: "https://ai-chat-demo.vercel.app",
-    image: "/api/placeholder/400/250",
+    github: "#",
+    demo: "#",
+    image: "",
   },
 ];
 
@@ -86,8 +87,9 @@ export default function Projects() {
               My Projects
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A collection of projects showcasing my skills in modern web
-              development, from full-stack applications to AI-powered solutions.
+              A collection of projects showcasing my expertise in modern web
+              development, from user-focused applications to enterprise
+              solutions with real-world impact.
             </p>
           </div>
 
@@ -98,13 +100,23 @@ export default function Projects() {
                 key={index}
                 className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
               >
-                {/* Project Image Placeholder */}
+                {/* Project Image */}
                 <div className="w-full h-48 bg-muted rounded-xl mb-6 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span className="text-muted-foreground font-medium">
-                      {project.title}
-                    </span>
-                  </div>
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={400}
+                      height={250}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                      <span className="text-muted-foreground font-medium">
+                        {project.title}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Project Content */}
@@ -160,11 +172,12 @@ export default function Projects() {
           <div className="text-center mt-16">
             <div className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-8 max-w-2xl mx-auto">
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Interested in working together?
+                Let&apos;s Work Together
               </h3>
               <p className="text-muted-foreground mb-6">
-                I&apos;m always open to discussing new opportunities and
-                exciting projects.
+                I&apos;m currently available for immediate employment and open
+                to discussing new opportunities. Let&apos;s build something
+                amazing together!
               </p>
               <Link
                 href="mailto:terrycheng2k@outlook.com"
