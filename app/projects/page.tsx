@@ -82,15 +82,10 @@ export default function Projects() {
       <div className="relative z-10 min-h-screen pt-20 pb-32">
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
-              My Projects
+          <div className="text-center mb-8 sm:mb-16">
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground">
+              Projects
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A collection of projects showcasing my expertise in modern web
-              development, from user-focused applications to enterprise
-              solutions with real-world impact.
-            </p>
           </div>
 
           {/* Projects Grid */}

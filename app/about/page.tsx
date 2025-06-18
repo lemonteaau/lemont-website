@@ -84,7 +84,7 @@ export default function AboutPage() {
         borderWidth={0.5}
         crossWidth={0.6}
       />
-      <div className="container mx-auto px-4 py-24 sm:py-32">
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto bg-background/80 backdrop-blur-sm p-8 shadow-lg border border-border">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div
@@ -145,27 +145,42 @@ export default function AboutPage() {
                 growth of my employers.
               </p>
             </div>
-
             <div>
               <h3 className="text-xl font-semibold text-foreground mb-3">
-                Education
+                Working Experience
               </h3>
               <div className="space-y-3">
                 <div>
                   <h4 className="font-medium text-foreground">
-                    Master of Computing and Innovation
+                    Software Developer Intern -- Morialta Software
                   </h4>
-                  <p className="text-muted-foreground">
-                    University of Adelaide • Feb 2023 – Nov 2024
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-foreground">
-                    Bachelor of Business Administration
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Shanghai University • Sep 2018 – Jun 2022
-                  </p>
+                  <p className="text-muted-foreground">July 2024 – Feb 2025</p>
+                  <div className="space-y-2 text-muted-foreground">
+                    <p>
+                      • Built core features for an enterprise event management
+                      MVP using Next.js, TypeScript, tRPC, and Drizzle ORM
+                    </p>
+                    <p>
+                      • Transitioned quickly to Phoenix/Elixir, contributing 20%
+                      of total project tickets within one month
+                    </p>
+                    <p>
+                      • Implemented robust UI and backend modules, delivering
+                      32% of total features in the initial phase
+                    </p>
+                    <p>
+                      • Improved reliability by introducing Cypress automated
+                      tests and resolving key date-related bugs
+                    </p>
+                    <p>
+                      • Contributed to code reviews, proposed UI/UX
+                      enhancements, and participated in daily standups
+                    </p>
+                    <p>
+                      • Collaborated closely in a 4-person Agile team,
+                      maintaining clear communication and knowledge sharing
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -211,6 +226,30 @@ export default function AboutPage() {
                   <p className="text-sm">
                     Problem solving, teamwork, communication, stakeholder
                     management, adaptability
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                Education
+              </h3>
+              <div className="space-y-3">
+                <div>
+                  <h4 className="font-medium text-foreground">
+                    Master of Computing and Innovation
+                  </h4>
+                  <p className="text-muted-foreground">
+                    University of Adelaide • Feb 2023 – Nov 2024
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-foreground">
+                    Bachelor of Business Administration
+                  </h4>
+                  <p className="text-muted-foreground">
+                    Shanghai University • Sep 2018 – Jun 2022
                   </p>
                 </div>
               </div>
