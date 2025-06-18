@@ -45,14 +45,14 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="order-2 sm:order-1 text-center pointer-events-none cursor-pointer">
+      <div className="order-2 sm:order-1 text-center pointer-events-none cursor-pointer font-doto">
         <div className="transform -skew-x-24 skew-y-7 -translate-y-18.5 translate-x-2 sm:translate-y-4 sm:translate-x-0">
           <h1
             ref={titleRef}
             style={{ textShadow: "8px 8px 10px rgba(0, 0, 0, 0.2)" }}
             className="text-9xl lg:text-[12rem] font-bold text-foreground mb-6 pointer-events-none"
           >
-            Terry
+            <span>Terry</span>
           </h1>
           <p
             ref={subtitleRef}
