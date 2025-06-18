@@ -53,8 +53,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="order-2 sm:order-1 text-center pointer-events-none cursor-pointer font-doto">
-        <div className="transform -skew-x-24 skew-y-7 -translate-y-18.5 translate-x-2 sm:translate-y-4 sm:translate-x-0">
+      <div className="order-2 sm:order-1 text-right pointer-events-none cursor-pointer font-doto">
+        <div className="transform -skew-x-24 skew-y-7 -translate-y-18.5 -translate-x-1 sm:translate-y-4 sm:translate-x-0">
           <h1
             ref={titleRef}
             style={{
@@ -73,9 +73,11 @@ export default function Hero() {
               opacity: 0,
               transform: "translate3d(0, 50px, 0)",
             }}
-            className="text-2xl max-w-2xl mx-auto leading-relaxed pointer-events-none"
+            className="text-xl sm:text-2xl max-w-2xl mx-auto leading-relaxed pointer-events-none font-bold"
           >
             Full-Stack Developer
+            <br />
+            <span className="text-sm">🟢</span> Available for opportunities
           </p>
         </div>
       </div>
