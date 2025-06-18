@@ -29,7 +29,7 @@ const projects = [
   {
     title: "Personal Website",
     description:
-      "A pixel-perfect personal website with advanced features like dynamic typewriter intro, smooth animations using GSAP, and custom tooltip components.",
+      "Just a simple personal website which you are looking at right now.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },

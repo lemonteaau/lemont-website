@@ -181,7 +181,7 @@ export default function AboutPage() {
                   </h4>
                   <p className="text-sm">
                     JavaScript, TypeScript, Node.js, Elixir, Python, C++, HTML,
-                    CSS, PostgreSQL, MySQL
+                    CSS, SQL
                   </p>
                 </div>
                 <div>
@@ -189,8 +189,9 @@ export default function AboutPage() {
                     Frameworks & Libraries
                   </h4>
                   <p className="text-sm">
-                    React, Next.js, Phoenix, Tailwind CSS, Cypress, shadcn/ui,
-                    Material UI, Framer Motion, GSAP
+                    React, Next.js, React Router, Phoenix, Tailwind CSS, CSS
+                    Modules, Cypress, Preline UI, shadcn/ui, Material UI, Framer
+                    Motion, GSAP
                   </p>
                 </div>
                 <div>
@@ -198,8 +199,9 @@ export default function AboutPage() {
                     Tools & Platforms
                   </h4>
                   <p className="text-sm">
-                    Git, GitHub, Cloudflare, Vercel, Docker, Drizzle ORM, tRPC,
-                    Fly.io, Figma
+                    Git, GitHub, GitHub Actions, Cloudflare, Vercel, Drizzle
+                    ORM, tRPC, RESTful, Fly.io, webpack, Vite, Shell, Docker,
+                    Umami, react-i18next, Jira, Figma, n8n
                   </p>
                 </div>
                 <div>
