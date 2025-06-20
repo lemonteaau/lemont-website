@@ -108,7 +108,7 @@ export default function Projects() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col"
               >
                 {/* Project Image */}
                 <div className="w-full h-48 bg-muted rounded-xl mb-6 overflow-hidden">
@@ -130,17 +130,17 @@ export default function Projects() {
                 </div>
 
                 {/* Project Content */}
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                <div className="flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors mb-4">
                     {project.title}
                   </h3>
 
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
                     {project.description}
                   </p>
 
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 mb-6">
                     {project.tech.map((tech, techIndex) => (
                       <div
                         key={techIndex}
@@ -153,7 +153,7 @@ export default function Projects() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 pt-2">
+                  <div className="flex gap-3 mt-auto">
                     <Link
                       href={project.github}
                       target="_blank"
