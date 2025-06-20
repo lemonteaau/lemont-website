@@ -8,7 +8,9 @@ import {
   SiTypescript,
   SiTailwindcss,
   SiPython,
+  SiElixir,
 } from "react-icons/si";
+import { FaPhoenixFramework } from "react-icons/fa";
 import Image from "next/image";
 import snapsnap from "@/public/snapsnappro_logo.svg";
 
@@ -57,8 +59,8 @@ const projects = [
     description:
       "MVP for event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
     tech: [
-      { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
-      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
+      { name: "Elixir", icon: <SiElixir className="w-5 h-5" /> },
+      { name: "Phoenix", icon: <FaPhoenixFramework className="w-5 h-5" /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
     ],
     github: "#",
