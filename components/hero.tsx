@@ -33,7 +33,11 @@ export default function Hero() {
               ease="power3.out"
             />
             <div className="flex gap-3 items-center">
-              <SplitText text="🟢" ease="power3.out" className="text-sm" />
+              <SplitText
+                text="🟢"
+                ease="power3.out"
+                className="text-sm text-shadow-lg"
+              />
               <SplitText text="Available for opportunities" ease="power3.out" />
             </div>
           </div>
