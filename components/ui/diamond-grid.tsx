@@ -1,6 +1,6 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 interface DiamondGridProps {
   hoverColor?: string;
@@ -23,8 +23,33 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
   borderWidth = 0.5,
   crossWidth = 0.5,
 }) => {
-  const totalGroups = 4000;
-  const cols = 80;
+  const { cols, rows, totalGroups } = useMemo(() => {
+    const viewportWidth =
+      typeof window !== "undefined" ? window.innerWidth : 1920;
+    const viewportHeight =
+      typeof window !== "undefined" ? window.innerHeight : 1080;
+
+    const transformBuffer = 2; // Safety factor
+    const effectiveCellSize = cellSize * 2;
+
+    const neededCols = Math.ceil(
+      (viewportWidth * transformBuffer) / effectiveCellSize
+    );
+    const neededRows = Math.ceil(
+      (viewportHeight * transformBuffer) / effectiveCellSize
+    );
+
+    // Ensure it's an odd number, so that the center can be used as the origin for symmetric distribution
+    const cols = neededCols % 2 === 0 ? neededCols + 1 : neededCols;
+    const rows = neededRows % 2 === 0 ? neededRows + 1 : neededRows;
+
+    // Limit the number of columns and rows to avoid performance issues
+    return {
+      cols: Math.min(cols, 60),
+      rows: Math.min(rows, 51),
+      totalGroups: Math.min(cols * rows, 4000),
+    };
+  }, [cellSize]);
 
   const getCellBorders = (cellIndex: number, groupIndex: number) => {
     const groupRow = Math.floor(groupIndex / cols);
@@ -54,6 +79,8 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
           position: relative;
           cursor: pointer;
           transition: background-color ${fadeOutDuration}s ease-out;
+          transform: translate3d(0, 0, 0);
+          backface-visibility: hidden;
         }
         
         .diamond-cell:hover {
@@ -103,18 +130,18 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
           overflow: "hidden",
           zIndex: -1,
           background: tileColor,
+          transform: "translate3d(0, 0, 0)",
+          willChange: "transform",
         }}
       >
         <div
           style={{
-            position: "fixed",
+            position: "absolute",
             top: "50%",
             left: "50%",
-            width: "200vw",
-            height: "200vh",
             display: "grid",
             gridTemplateColumns: `repeat(${cols}, ${cellSize * 2}px)`,
-            gridTemplateRows: `repeat(50, ${cellSize * 2}px)`,
+            gridTemplateRows: `repeat(${rows}, ${cellSize * 2}px)`,
             transform:
               "translate(-50%, -50%) skewX(-24deg) skewY(7deg) scaleX(1.8) scale(0.8)",
             transformOrigin: "center",
