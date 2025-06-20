@@ -29,15 +29,8 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
     const viewportHeight =
       typeof window !== "undefined" ? window.innerHeight : 1080;
 
-    const transformBuffer = 2; // Safety factor
-    const effectiveCellSize = cellSize * 2;
-
-    const neededCols = Math.ceil(
-      (viewportWidth * transformBuffer) / effectiveCellSize
-    );
-    const neededRows = Math.ceil(
-      (viewportHeight * transformBuffer) / effectiveCellSize
-    );
+    const neededCols = Math.ceil(viewportWidth / cellSize);
+    const neededRows = Math.ceil(viewportHeight / cellSize);
 
     // Ensure it's an odd number, so that the center can be used as the origin for symmetric distribution
     const cols = neededCols % 2 === 0 ? neededCols + 1 : neededCols;
@@ -45,9 +38,9 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
 
     // Limit the number of columns and rows to avoid performance issues
     return {
-      cols: Math.min(cols, 60),
-      rows: Math.min(rows, 51),
-      totalGroups: Math.min(cols * rows, 4000),
+      cols: Math.min(cols, 36),
+      rows: Math.min(rows, 14),
+      totalGroups: Math.min(cols * rows, 1500),
     };
   }, [cellSize]);
 
