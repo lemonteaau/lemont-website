@@ -86,6 +86,19 @@ export default function Projects() {
             <h1 className="text-4xl md:text-6xl font-bold text-foreground">
               Projects
             </h1>
+
+            {/* WIP Banner */}
+            <div className="mt-6 mb-4 mx-auto max-w-2xl">
+              <div className="bg-orange-100 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4 shadow-sm">
+                <div className="flex items-center justify-center gap-2 text-orange-800 dark:text-orange-200">
+                  <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                  <span className="font-medium text-sm sm:text-base">
+                    🚧 This page is still a work in progress
+                  </span>
+                  <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Projects Grid */}
