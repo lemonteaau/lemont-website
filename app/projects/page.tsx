@@ -53,9 +53,9 @@ const projects = [
     image: "",
   },
   {
-    title: "Enterprise Event Management System",
+    title: "Event Management System",
     description:
-      "MVP for enterprise event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
+      "MVP for event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
