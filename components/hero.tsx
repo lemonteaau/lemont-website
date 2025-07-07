@@ -31,14 +31,23 @@ export default function Hero() {
               text="Full-Stack Developer"
               className="inline-block"
               ease="power3.out"
+              duration={0.2}
+              delay={50}
             />
             <div className="flex gap-3 items-center">
               <SplitText
                 text="🟢"
                 ease="power3.out"
                 className="text-sm text-shadow-lg"
+                duration={0.2}
+                delay={50}
               />
-              <SplitText text="Available for opportunities" ease="power3.out" />
+              <SplitText
+                text="Available for opportunities"
+                ease="power3.out"
+                duration={0.2}
+                delay={50}
+              />
             </div>
           </div>
         </div>
