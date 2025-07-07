@@ -10,11 +10,41 @@ import {
   SiPython,
   SiElixir,
   SiPhoenixframework,
+  SiSupabase,
+  SiCloudflare,
 } from "react-icons/si";
 import Image from "next/image";
 import snapsnap from "@/public/snapsnappro_logo.svg";
 
 const projects = [
+  {
+    title: "Artist Array",
+    description:
+      "A web platform for the AI art community to share, discover, and utilize 'Artist Strings'—curated lists of artist names used to define specific art styles in AI image generation models like NovelAI and Stable Diffusion.",
+    tech: [
+      { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
+      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
+      { name: "Supabase", icon: <SiSupabase className="w-5 h-5" /> },
+      { name: "Cloudflare R2", icon: <SiCloudflare className="w-5 h-5" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+    ],
+    github: "https://github.com/lemonteaau/artist-array",
+    demo: "https://artist-array.vercel.app",
+    image: "",
+  },
+  {
+    title: "Event Management System",
+    description:
+      "MVP for event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
+    tech: [
+      { name: "Elixir", icon: <SiElixir className="w-5 h-5" /> },
+      { name: "Phoenix", icon: <SiPhoenixframework className="w-5 h-5" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+    ],
+    github: "#",
+    demo: "#",
+    image: "",
+  },
   {
     title: "Snapsnap.pro Bundle Calculator",
     description:
@@ -51,19 +81,6 @@ const projects = [
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
     ],
     github: "https://github.com/lemonteaau",
-    demo: "#",
-    image: "",
-  },
-  {
-    title: "Event Management System",
-    description:
-      "MVP for event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
-    tech: [
-      { name: "Elixir", icon: <SiElixir className="w-5 h-5" /> },
-      { name: "Phoenix", icon: <SiPhoenixframework className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-    ],
-    github: "#",
     demo: "#",
     image: "",
   },
