@@ -154,30 +154,31 @@ export default function AboutPage() {
                     Software Developer Intern -- Morialta Software
                   </h4>
                   <p className="text-muted-foreground">July 2024 – Feb 2025</p>
-                  <div className="space-y-2 text-muted-foreground">
+                  <div className="space-y-1 text-muted-foreground">
                     <p>
-                      • Built core features for an enterprise event management
-                      MVP using Next.js, TypeScript, tRPC, and Drizzle ORM
+                      • Contributed to core features across two tech stacks,
+                      delivering 32% of project tickets with Next.js and 20%
+                      with Phoenix/Elixir
                     </p>
                     <p>
-                      • Transitioned quickly to Phoenix/Elixir, contributing 20%
-                      of total project tickets within one month
+                      • Engineered critical data-entry forms with complex
+                      validation logic and handled core back-end business
+                      functionalities.
                     </p>
                     <p>
-                      • Implemented robust UI and backend modules, delivering
-                      32% of total features in the initial phase
+                      • Navigated a major tech pivot by mastering Phoenix/Elixir
+                      within one month, building essential UI components and
+                      form logic from scratch.
                     </p>
                     <p>
-                      • Improved reliability by introducing Cypress automated
-                      tests and resolving key date-related bugs
+                      • Implemented a Cypress automated testing strategy and
+                      resolved a critical bug that blocked the CI/CD pipeline,
+                      ensuring development continuity.
                     </p>
                     <p>
-                      • Contributed to code reviews, proposed UI/UX
-                      enhancements, and participated in daily standups
-                    </p>
-                    <p>
-                      • Collaborated closely in a 5-person Agile team,
-                      maintaining clear communication and knowledge sharing
+                      • Enhanced application quality through code reviews and
+                      UI/UX suggestions while collaborating effectively in a
+                      5-person agile team.
                     </p>
                   </div>
                 </div>
@@ -215,7 +216,7 @@ export default function AboutPage() {
                   <p className="text-sm">
                     Git, GitHub, GitHub Actions, Cloudflare, Vercel, Drizzle
                     ORM, tRPC, RESTful, Fly.io, webpack, Vite, Shell, Docker,
-                    Umami, react-i18next, Jira, Figma, n8n
+                    Supabase, Umami, react-i18next, Jira, Figma, n8n
                   </p>
                 </div>
                 <div>
