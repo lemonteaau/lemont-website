@@ -136,13 +136,12 @@ export default function AboutPage() {
                 About Me
               </h3>
               <p>
-                Diligent and adaptive software engineer specialised in front-end
-                development. With hands-on experience in JavaScript/TypeScript,
-                React, Next.js, Elixir, Phoenix, and Tailwind CSS, I&apos;m
-                actively expanding my skillset to meet the strictest
-                requirements from the job market. Eager to dedicate my passion
-                and skills in software engineering to contribute to the business
-                growth of my employers.
+                Diligent and adaptive software engineer specialised in
+                full-stack web development. With hands-on experience in
+                JavaScript/TypeScript, React, Next.js, Tailwind CSS, Elixir and
+                Phoenix. Eager to dedicate my passion and skills in software
+                engineering to contribute to the business growth of my
+                employers.
               </p>
             </div>
             <div>
