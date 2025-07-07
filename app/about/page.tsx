@@ -176,7 +176,7 @@ export default function AboutPage() {
                       enhancements, and participated in daily standups
                     </p>
                     <p>
-                      • Collaborated closely in a 4-person Agile team,
+                      • Collaborated closely in a 5-person Agile team,
                       maintaining clear communication and knowledge sharing
                     </p>
                   </div>
