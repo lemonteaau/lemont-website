@@ -1,3 +1,5 @@
+"use client";
+
 import NavDock from "@/components/nav-dock";
 import DiamondGrid from "@/components/ui/diamond-grid";
 import Link from "next/link";
@@ -15,48 +17,48 @@ import {
 } from "react-icons/si";
 import Image from "next/image";
 import snapsnap from "@/public/snapsnappro_logo.svg";
+import artistArray from "@/public/artist_array_logo.png";
+import SplitText from "@/components/ui/split-text";
 
 const projects = [
   {
     title: "Artist Array",
     description:
-      "A web platform for the AI art community to share, discover, and utilize 'Artist Strings'—curated lists of artist names used to define specific art styles in AI image generation models like NovelAI and Stable Diffusion.",
+      "A web platform for the AI art community to share, discover, and utilise 'Artist Strings'—curated lists of artist names used to define specific art styles in AI image generation models like NovelAI and Stable Diffusion.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
       { name: "Supabase", icon: <SiSupabase className="w-5 h-5" /> },
       { name: "Cloudflare R2", icon: <SiCloudflare className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
     ],
     github: "https://github.com/lemonteaau/artist-array",
     demo: "https://artist-array.vercel.app",
-    image: "",
-  },
-  {
-    title: "Event Management System",
-    description:
-      "MVP for event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
-    tech: [
-      { name: "Elixir", icon: <SiElixir className="w-5 h-5" /> },
-      { name: "Phoenix", icon: <SiPhoenixframework className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-    ],
-    github: "#",
-    demo: "#",
-    image: "",
+    image: artistArray,
   },
   {
     title: "Snapsnap.pro Bundle Calculator",
     description:
-      "A Next.js app for Marvel Snap players with ~250 daily active users. Features responsive UI, internationalization with Chinese support, and smooth animations.",
+      "A Next.js app for Marvel Snap players to calculate the cost of bundles. Features responsive UI and i18n support.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
     ],
     github: "https://github.com/lemonteaau/snapsnap.pro",
-    demo: "https://snapsnap.pro/",
+    demo: "https://snap-calculator.vercel.app/",
     image: snapsnap,
+  },
+  {
+    title: "Korral Pro",
+    description:
+      "A web platform for event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
+    tech: [
+      { name: "Elixir", icon: <SiElixir className="w-5 h-5" /> },
+      { name: "Phoenix", icon: <SiPhoenixframework className="w-5 h-5" /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+    ],
+    image: "",
   },
   {
     title: "Personal Website",
@@ -80,8 +82,6 @@ const projects = [
       { name: "Python", icon: <SiPython className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
     ],
-    github: "https://github.com/lemonteaau",
-    demo: "#",
     image: "",
   },
 ];
@@ -98,16 +98,16 @@ export default function Projects() {
         borderWidth={0.5}
         crossWidth={0.6}
       />
-      <div className="relative z-10 min-h-screen pt-20 pb-32">
+      <div className="relative z-10 min-h-screen pt-16 pb-32">
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Header */}
-          <div className="text-center mb-8 sm:mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-              Projects
+          <div className="text-center mb-16">
+            <h1 className="text-6xl md:text-8xl font-bold text-foreground pointer-events-none text-shadow-[8px_8px_10px_rgba(0,0,0,0.2)] transform -skew-x-24 skew-y-7 translate-y-4 translate-x-0 font-doto">
+              <SplitText text="Projects" ease="power3.out" />
             </h1>
 
             {/* WIP Banner */}
-            <div className="mt-6 mb-4 mx-auto max-w-2xl">
+            {/* <div className="mt-6 mb-4 mx-auto max-w-2xl">
               <div className="bg-orange-100 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4 shadow-sm">
                 <div className="flex items-center justify-center gap-2 text-orange-800 dark:text-orange-200">
                   <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
@@ -117,7 +117,7 @@ export default function Projects() {
                   <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Projects Grid */}
@@ -128,14 +128,14 @@ export default function Projects() {
                 className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col"
               >
                 {/* Project Image */}
-                <div className="w-full h-48 bg-muted rounded-xl mb-6 overflow-hidden">
+                <div className="w-full h-48 bg-white dark:bg-gray-100 rounded-xl mb-6 overflow-hidden flex items-center justify-center">
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       width={400}
                       height={250}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain p-4"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
@@ -171,48 +171,32 @@ export default function Projects() {
 
                   {/* Action Buttons */}
                   <div className="flex gap-3 mt-auto">
-                    <Link
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors font-medium"
-                    >
-                      <IoLogoGithub className="w-4 h-4" />
-                      Code
-                    </Link>
-                    <Link
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-lg hover:bg-secondary/80 transition-colors font-medium"
-                    >
-                      <IoOpenOutline className="w-4 h-4" />
-                      Demo
-                    </Link>
+                    {project.github && (
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                      >
+                        <IoLogoGithub className="w-4 h-4" />
+                        Code
+                      </Link>
+                    )}
+                    {project.demo && (
+                      <Link
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-lg hover:bg-secondary/80 transition-colors font-medium"
+                      >
+                        <IoOpenOutline className="w-4 h-4" />
+                        Demo
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center mt-16">
-            <div className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-8 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Let&apos;s Work Together
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                I&apos;m currently available for immediate employment and open
-                to discussing new opportunities. Let&apos;s build something
-                amazing together!
-              </p>
-              <Link
-                href="mailto:terrycheng2k@outlook.com"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium"
-              >
-                Get in Touch
-              </Link>
-            </div>
           </div>
         </div>
       </div>
