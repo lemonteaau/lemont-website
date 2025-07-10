@@ -171,9 +171,9 @@ export default function AboutPage() {
                       form logic from scratch.
                     </p>
                     <p>
-                      • Implemented a Cypress automated testing strategy and
-                      resolved a critical bug that blocked the CI/CD pipeline,
-                      ensuring development continuity.
+                      • Implemented Cypress automated testing and resolved bugs
+                      that blocked the CI/CD pipeline, ensuring development
+                      continuity.
                     </p>
                     <p>
                       • Enhanced application quality through code reviews and
@@ -235,7 +235,7 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold text-foreground mb-3">
                 Education
               </h3>
-              <div className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <h4 className="font-medium text-foreground">
                     Master of Computing and Innovation
