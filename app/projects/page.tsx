@@ -14,11 +14,16 @@ import {
   SiPhoenixframework,
   SiSupabase,
   SiCloudflare,
+  SiJavascript,
+  SiTampermonkey,
 } from "react-icons/si";
 import Image from "next/image";
 import snapsnap from "@/public/snapsnappro_logo.svg";
 import artistArray from "@/public/artist_array_logo.png";
 import SplitText from "@/components/ui/split-text";
+import ozSupermarketBillSplitter from "@/public/ozSupermarketBillSplitter.png";
+import linkedinSeekJobAnalyzer from "@/public/linkedinSeekJobAnalyzer.png";
+import youtubeSpeedControlButton from "@/public/youtubeSpeedControlButton.png";
 
 const projects = [
   {
@@ -59,6 +64,41 @@ const projects = [
       { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
     ],
     image: "",
+  },
+  {
+    title: "OZ Supermarket Bill Splitter",
+    description: "A userscript to split bill for Woolies/Coles order.",
+    tech: [
+      { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
+      { name: "Userscript", icon: <SiTampermonkey className="w-5 h-5" /> },
+    ],
+    github: "https://github.com/lemonteaau/OZ-Supermarket-Bill-Splitter",
+    demo: "",
+    image: ozSupermarketBillSplitter,
+  },
+  {
+    title: "LinkedIn-SEEK Job Analyzer",
+    description:
+      "A Tampermonkey userscript that automatically analyzes LinkedIn and SEEK job postings to extract key information and requirements.",
+    tech: [
+      { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
+      { name: "Tampermonkey", icon: <SiTampermonkey className="w-5 h-5" /> },
+    ],
+    github: "https://github.com/lemonteaau/LinkedIn-SEEK-Job-Analyzer",
+    demo: "",
+    image: linkedinSeekJobAnalyzer,
+  },
+  {
+    title: "YouTube Speed Control Button",
+    description:
+      "A simple userscript that adds a speed control button to YouTube's video player interface.",
+    tech: [
+      { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
+      { name: "Userscript", icon: <SiTampermonkey className="w-5 h-5" /> },
+    ],
+    github: "https://github.com/lemonteaau/YouTube-Speed-Control-Button",
+    demo: "",
+    image: youtubeSpeedControlButton,
   },
   {
     title: "Personal Website",
@@ -105,19 +145,6 @@ export default function Projects() {
             <h1 className="text-6xl md:text-8xl font-bold text-foreground pointer-events-none text-shadow-[8px_8px_10px_rgba(0,0,0,0.2)] transform -skew-x-24 skew-y-7 translate-y-4 translate-x-0 font-doto">
               <SplitText text="Projects" ease="power3.out" />
             </h1>
-
-            {/* WIP Banner */}
-            {/* <div className="mt-6 mb-4 mx-auto max-w-2xl">
-              <div className="bg-orange-100 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-4 shadow-sm">
-                <div className="flex items-center justify-center gap-2 text-orange-800 dark:text-orange-200">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                  <span className="font-medium text-sm sm:text-base">
-                    🚧 This page is still a work in progress
-                  </span>
-                  <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                </div>
-              </div>
-            </div> */}
           </div>
 
           {/* Projects Grid */}
@@ -152,47 +179,49 @@ export default function Projects() {
                     {project.title}
                   </h3>
 
-                  <p className="text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-muted-foreground leading-relaxed mb-4 flex-grow">
                     {project.description}
                   </p>
 
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <div
-                        key={techIndex}
-                        className="flex items-center gap-2 bg-secondary/50 px-3 py-1.5 rounded-full text-sm font-medium text-secondary-foreground"
-                      >
-                        {tech.icon}
-                        <span>{tech.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="mt-auto space-y-6">
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-3">
+                      {project.tech.map((tech, techIndex) => (
+                        <div
+                          key={techIndex}
+                          className="flex items-center gap-2 bg-secondary/70 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground"
+                        >
+                          {tech.icon}
+                          <span>{tech.name}</span>
+                        </div>
+                      ))}
+                    </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-3 mt-auto">
-                    {project.github && (
-                      <Link
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors font-medium"
-                      >
-                        <IoLogoGithub className="w-4 h-4" />
-                        Code
-                      </Link>
-                    )}
-                    {project.demo && (
-                      <Link
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-lg hover:bg-secondary/80 transition-colors font-medium"
-                      >
-                        <IoOpenOutline className="w-4 h-4" />
-                        Demo
-                      </Link>
-                    )}
+                    {/* Action Buttons */}
+                    <div className="flex gap-3">
+                      {project.github && (
+                        <Link
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                        >
+                          <IoLogoGithub className="w-4 h-4" />
+                          Code
+                        </Link>
+                      )}
+                      {project.demo && (
+                        <Link
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-lg hover:bg-secondary/80 transition-colors font-medium"
+                        >
+                          <IoOpenOutline className="w-4 h-4" />
+                          Demo
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
