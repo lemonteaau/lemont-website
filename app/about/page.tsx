@@ -6,6 +6,7 @@ import NavDock from "@/components/nav-dock";
 import DiamondGrid from "@/components/ui/diamond-grid";
 import Image from "next/image";
 import profile from "@/public/logo.png";
+import { FaLocationDot } from "react-icons/fa6";
 
 export default function AboutPage() {
   const imageRef = useRef(null);
@@ -120,9 +121,10 @@ export default function AboutPage() {
                 style={{ opacity: 0, transform: "translate3d(0, 50px, 0)" }}
                 className="mt-4 space-y-2 text-sm text-muted-foreground"
               >
-                <p>📍 Adelaide, SA 5000</p>
-                <p>💼 485 Visa - Full Working Rights</p>
-                <p>🟢 Available for immediate employment</p>
+                <div className="flex items-center gap-2">
+                  <FaLocationDot className="text-black" />
+                  <p>Adelaide, SA 5000</p>
+                </div>
               </div>
             </div>
           </div>
