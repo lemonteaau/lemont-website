@@ -17,6 +17,7 @@ import {
   SiJavascript,
   SiTampermonkey,
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa";
 import Image from "next/image";
 import snapsnap from "@/public/snapsnappro_logo.svg";
 import artistArray from "@/public/artist_array_logo.png";
@@ -35,10 +36,11 @@ const projects = [
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
       { name: "Supabase", icon: <SiSupabase className="w-5 h-5" /> },
+      { name: "AWS", icon: <FaAws className="w-5 h-5" /> },
       { name: "Cloudflare R2", icon: <SiCloudflare className="w-5 h-5" /> },
     ],
     github: "https://github.com/lemonteaau/artist-array",
-    demo: "https://artist-array.vercel.app",
+    demo: "https://artistarray.com",
     image: artistArray,
   },
   {

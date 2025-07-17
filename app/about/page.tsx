@@ -121,7 +121,7 @@ export default function AboutPage() {
                 style={{ opacity: 0, transform: "translate3d(0, 50px, 0)" }}
                 className="mt-4 space-y-2 text-sm text-muted-foreground"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 justify-center md:justify-start">
                   <FaLocationDot className="text-black" />
                   <p>Adelaide, SA 5000</p>
                 </div>
@@ -138,12 +138,13 @@ export default function AboutPage() {
                 About Me
               </h3>
               <p>
-                Diligent and adaptive software engineer specialised in
-                full-stack web development. With hands-on experience in
-                JavaScript/TypeScript, React, Next.js, Tailwind CSS, Elixir and
-                Phoenix. Eager to dedicate my passion and skills in software
-                engineering to contribute to the business growth of my
-                employers.
+                Adaptive full-stack software engineer with hands-on experience
+                building and delivering robust web applications using
+                JavaScript/TypeScript and Elixir ecosystems. Demonstrated
+                ability to quickly learn new technologies and solve complex
+                problems in agile environments. Eager to apply my passion for
+                creating high-quality, user-centric software to drive business
+                growth.
               </p>
             </div>
             <div>
