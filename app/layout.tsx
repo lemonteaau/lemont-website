@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: "Terry Cheng's personal website",
     url: "https://lemontea.xyz",
     siteName: "Terry Cheng",
-    images: [{ url: "logo.png" }],
+    images: [{ url: "og-image.png" }],
   },
   authors: [{ name: "Terry Cheng", url: "https://lemontea.xyz" }],
 };
