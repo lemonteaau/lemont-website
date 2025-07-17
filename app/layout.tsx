@@ -21,6 +21,13 @@ const doto = Doto({
 export const metadata: Metadata = {
   title: "Terry Cheng",
   description: "Terry Cheng's personal website",
+  openGraph: {
+    title: "Terry Cheng",
+    description: "Terry Cheng's personal website",
+    url: "https://lemontea.xyz",
+    siteName: "Terry Cheng",
+    images: [{ url: "logo.png" }],
+  },
   authors: [{ name: "Terry Cheng", url: "https://lemontea.xyz" }],
 };
 
