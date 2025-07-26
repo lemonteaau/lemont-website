@@ -4,8 +4,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import NavDock from "@/components/nav-dock";
 import DiamondGrid from "@/components/ui/diamond-grid";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Image from "next/image";
-import profile from "@/public/logo.png";
+import profile from "@/public/images/logo.png";
 import { FaLocationDot } from "react-icons/fa6";
 
 export default function AboutPage() {
@@ -78,13 +79,21 @@ export default function AboutPage() {
     <>
       <DiamondGrid
         fadeOutDuration={1}
-        crossColor="#999999"
-        borderColor="#E8E8E8"
         cellSize={30}
-        hoverColor={"#60BE60"}
         borderWidth={0.5}
         crossWidth={0.6}
+        themeAware={true}
+        skewX={0}
+        skewY={0}
+        scaleX={1}
+        scaleY={1}
       />
+
+      {/* Theme Toggle Button */}
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto bg-background/80 backdrop-blur-sm p-8 shadow-lg border border-border">
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -122,7 +131,7 @@ export default function AboutPage() {
                 className="mt-4 space-y-2 text-sm text-muted-foreground"
               >
                 <div className="flex items-center gap-2 justify-center md:justify-start">
-                  <FaLocationDot className="text-black" />
+                  <FaLocationDot className="text-foreground" />
                   <p>Adelaide, SA 5000</p>
                 </div>
               </div>
@@ -209,7 +218,7 @@ export default function AboutPage() {
                   <p className="text-sm">
                     React, Next.js, React Router, Phoenix, Tailwind CSS, CSS
                     Modules, Cypress, Preline UI, shadcn/ui, Material UI, Framer
-                    Motion, GSAP
+                    Motion, GSAP, React Three Fiber
                   </p>
                 </div>
                 <div>

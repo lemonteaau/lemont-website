@@ -2,6 +2,7 @@
 
 import NavDock from "@/components/nav-dock";
 import DiamondGrid from "@/components/ui/diamond-grid";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Link from "next/link";
 import { IoLogoGithub, IoOpenOutline } from "react-icons/io5";
 import {
@@ -19,18 +20,18 @@ import {
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import Image from "next/image";
-import snapsnap from "@/public/snapsnappro_logo.svg";
-import artistArray from "@/public/artist_array_logo.png";
+import snapsnap from "@/public/images/snapsnappro_logo.svg";
+import artistArray from "@/public/images/artist_array_logo.png";
 import SplitText from "@/components/ui/split-text";
-import ozSupermarketBillSplitter from "@/public/ozSupermarketBillSplitter.png";
-import linkedinSeekJobAnalyzer from "@/public/linkedinSeekJobAnalyzer.png";
-import youtubeSpeedControlButton from "@/public/youtubeSpeedControlButton.png";
+import ozSupermarketBillSplitter from "@/public/images/ozSupermarketBillSplitter.png";
+import linkedinSeekJobAnalyzer from "@/public/images/linkedinSeekJobAnalyzer.png";
+import youtubeSpeedControlButton from "@/public/images/youtubeSpeedControlButton.png";
 
 const projects = [
   {
     title: "Artist Array",
     description:
-      "A web platform for the AI art community to share, discover, and utilise 'Artist Strings'—curated lists of artist names used to define specific art styles in AI image generation models like NovelAI and Stable Diffusion.",
+      "A web platform for the AI art community to share, discover, and utilise 'Artist Strings'—curated lists of artist names used to define specific art styles in AI image generation models.",
     tech: [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
@@ -133,18 +134,26 @@ export default function Projects() {
     <>
       <DiamondGrid
         fadeOutDuration={1}
-        crossColor="#999999"
-        borderColor="#E8E8E8"
         cellSize={30}
-        hoverColor={"#60BE60"}
         borderWidth={0.5}
         crossWidth={0.6}
+        themeAware={true}
+        skewX={0}
+        skewY={0}
+        scaleX={1}
+        scaleY={1}
       />
+
+      {/* Theme Toggle Button */}
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+
       <div className="relative z-10 min-h-screen pt-16 pb-32">
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-8xl font-bold text-foreground pointer-events-none text-shadow-[8px_8px_10px_rgba(0,0,0,0.2)] transform -skew-x-24 skew-y-7 translate-y-4 translate-x-0 font-doto">
+            <h1 className="text-6xl md:text-8xl font-bold text-foreground pointer-events-none text-shadow-[8px_8px_10px_rgba(0,0,0,0.2)] transform  translate-y-4 font-doto">
               <SplitText text="Projects" ease="power3.out" />
             </h1>
           </div>
@@ -157,7 +166,7 @@ export default function Projects() {
                 className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col"
               >
                 {/* Project Image */}
-                <div className="w-full h-48 bg-white dark:bg-gray-100 rounded-xl mb-6 overflow-hidden flex items-center justify-center">
+                <div className="w-full h-48 bg-white dark:bg-gray-800 rounded-xl mb-6 overflow-hidden flex items-center justify-center">
                   {project.image ? (
                     <Image
                       src={project.image}

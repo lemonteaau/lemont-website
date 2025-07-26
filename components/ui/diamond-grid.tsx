@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useMemo } from "react";
+import { useTheme } from "next-themes";
 
 interface DiamondGridProps {
   hoverColor?: string;
@@ -11,18 +12,48 @@ interface DiamondGridProps {
   cellSize?: number;
   borderWidth?: number;
   crossWidth?: number;
+  themeAware?: boolean;
+  skewX?: number;
+  skewY?: number;
+  scaleX?: number;
+  scaleY?: number;
 }
 
 const DiamondGrid: React.FC<DiamondGridProps> = ({
-  hoverColor = "#3498DB",
-  tileColor = "#FFFFFF",
-  borderColor = "#F0F0F0",
-  crossColor = "#A4A4A4",
+  hoverColor,
+  tileColor,
+  borderColor,
+  crossColor,
   fadeOutDuration = 0.5,
   cellSize = 50,
   borderWidth = 0.5,
   crossWidth = 0.5,
+  themeAware = true,
+  skewX = -24,
+  skewY = 7,
+  scaleX = 1.8,
+  scaleY = 0.8,
 }) => {
+  const { theme } = useTheme();
+
+  const colors = useMemo(() => {
+    if (!themeAware) {
+      return {
+        hover: hoverColor || "#3498DB",
+        tile: tileColor || "#FFFFFF",
+        border: borderColor || "#F0F0F0",
+        cross: crossColor || "#A4A4A4",
+      };
+    }
+
+    const isDark = theme === "dark";
+    return {
+      hover: hoverColor || (isDark ? "#4A90E2" : "#60BE60"),
+      tile: tileColor || (isDark ? "#0F0F0F" : "#FFFFFF"),
+      border: borderColor || (isDark ? "#2A2A2A" : "#E8E8E8"),
+      cross: crossColor || (isDark ? "#555555" : "#999999"),
+    };
+  }, [theme, hoverColor, tileColor, borderColor, crossColor, themeAware]);
   const { cols, rows, totalGroups } = useMemo(() => {
     const viewportWidth =
       typeof window !== "undefined" ? window.innerWidth : 1920;
@@ -44,26 +75,29 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
     };
   }, [cellSize]);
 
-  const getCellBorders = (cellIndex: number, groupIndex: number) => {
-    const groupRow = Math.floor(groupIndex / cols);
-    const groupCol = groupIndex % cols;
+  const getCellBorders = useMemo(
+    () => (cellIndex: number, groupIndex: number) => {
+      const groupRow = Math.floor(groupIndex / cols);
+      const groupCol = groupIndex % cols;
 
-    const cellRow = Math.floor(cellIndex / 2);
-    const cellCol = cellIndex % 2;
+      const cellRow = Math.floor(cellIndex / 2);
+      const cellCol = cellIndex % 2;
 
-    return {
-      borderLeft: `${borderWidth}px solid ${borderColor}`,
-      borderBottom: `${borderWidth}px solid ${borderColor}`,
-      borderRight:
-        groupCol === cols - 1 && cellCol === 1
-          ? `${borderWidth}px solid ${borderColor}`
-          : "none",
-      borderTop:
-        groupRow === 0 && cellRow === 0
-          ? `${borderWidth}px solid ${borderColor}`
-          : "none",
-    };
-  };
+      return {
+        borderLeft: `${borderWidth}px solid ${colors.border}`,
+        borderBottom: `${borderWidth}px solid ${colors.border}`,
+        borderRight:
+          groupCol === cols - 1 && cellCol === 1
+            ? `${borderWidth}px solid ${colors.border}`
+            : "none",
+        borderTop:
+          groupRow === 0 && cellRow === 0
+            ? `${borderWidth}px solid ${colors.border}`
+            : "none",
+      };
+    },
+    [cols, borderWidth, colors.border]
+  );
 
   return (
     <>
@@ -77,7 +111,7 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
         }
         
         .diamond-cell:hover {
-          background-color: ${hoverColor} !important;
+          background-color: ${colors.hover} !important;
           transition: none !important;
         }
 
@@ -90,8 +124,12 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
           height: ${cellSize * 0.4}px;
           transform: translate(-50%, -50%);
           background: 
-            linear-gradient(${crossColor}, ${crossColor}) center/${crossWidth}px 100% no-repeat,
-            linear-gradient(${crossColor}, ${crossColor}) center/100% ${crossWidth}px no-repeat;
+            linear-gradient(${colors.cross}, ${
+        colors.cross
+      }) center/${crossWidth}px 100% no-repeat,
+            linear-gradient(${colors.cross}, ${
+        colors.cross
+      }) center/100% ${crossWidth}px no-repeat;
           opacity: 0.6;
           pointer-events: none;
           z-index: 10;
@@ -122,7 +160,7 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
           height: "100vh",
           overflow: "hidden",
           zIndex: -1,
-          background: tileColor,
+          background: colors.tile,
           transform: "translate3d(0, 0, 0)",
           willChange: "transform",
         }}
@@ -135,8 +173,7 @@ const DiamondGrid: React.FC<DiamondGridProps> = ({
             display: "grid",
             gridTemplateColumns: `repeat(${cols}, ${cellSize * 2}px)`,
             gridTemplateRows: `repeat(${rows}, ${cellSize * 2}px)`,
-            transform:
-              "translate(-50%, -50%) skewX(-24deg) skewY(7deg) scaleX(1.8) scale(0.8)",
+            transform: `translate(-50%, -50%) skewX(${skewX}deg) skewY(${skewY}deg) scaleX(${scaleX}) scale(${scaleY})`,
             transformOrigin: "center",
           }}
         >
