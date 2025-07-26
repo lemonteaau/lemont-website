@@ -28,7 +28,7 @@ export function LoadingScreen() {
         {/* Loading title */}
         <div className="space-y-2">
           <h2 className="text-2xl font-bold tracking-tight">
-            Loading 3D Scene
+            Loading Scene...
           </h2>
         </div>
 
