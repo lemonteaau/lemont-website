@@ -176,8 +176,8 @@ export default function Projects() {
                       className="w-full h-full object-contain p-4"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                      <span className="text-muted-foreground font-medium">
+                    <div className="w-full h-full bg-gradient-to-br dark:bg-gray-900 dark:from-primary/0 dark:to-accent/0 from-primary/20 to-accent/20 flex items-center justify-center">
+                      <span className="text-muted-foreground font-doto text-4xl">
                         {project.title}
                       </span>
                     </div>
