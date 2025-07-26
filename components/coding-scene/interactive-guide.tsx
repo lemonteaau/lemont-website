@@ -19,7 +19,7 @@ export function InteractiveGuide({ className }: { className?: string }) {
     <div className={cn("absolute inset-0 pointer-events-none", className)}>
       <div
         className={cn(
-          "absolute top-20 left-6 z-50 transition-all duration-1000 ease-in-out pointer-events-none select-none",
+          "absolute top-20 left-6 z-50 transition-all duration-1000 ease-in-out pointer-events-none select-none hidden sm:block",
           isVisible
             ? "opacity-100 scale-100 translate-y-0"
             : "opacity-0 scale-95 -translate-y-2"
