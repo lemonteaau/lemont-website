@@ -1,11 +1,12 @@
 import NavDock from "@/components/nav-dock";
-import DiamondGrid from "@/components/ui/diamond-grid";
-import Hero from "@/components/hero";
+// import DiamondGrid from "@/components/ui/diamond-grid";
+// import Hero from "@/components/hero";
+import { CodingScene } from "@/components/coding-scene/coding-scene";
 
 export default function Home() {
   return (
     <>
-      <DiamondGrid
+      {/* <DiamondGrid
         fadeOutDuration={1}
         crossColor="#999999"
         borderColor="#E8E8E8"
@@ -14,7 +15,8 @@ export default function Home() {
         borderWidth={0.5}
         crossWidth={0.6}
       />
-      <Hero />
+      <Hero /> */}
+      <CodingScene />
       <NavDock />
     </>
   );
