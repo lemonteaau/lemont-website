@@ -134,7 +134,7 @@ export default function Projects() {
     <>
       <DiamondGrid
         fadeOutDuration={1}
-        cellSize={30}
+        cellSize={50}
         borderWidth={0.5}
         crossWidth={0.6}
         themeAware={true}
@@ -166,7 +166,7 @@ export default function Projects() {
                 className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col"
               >
                 {/* Project Image */}
-                <div className="w-full h-48 bg-white dark:bg-gray-800 rounded-xl mb-6 overflow-hidden flex items-center justify-center">
+                <div className="w-full h-48 bg-white dark:bg-gray-900 rounded-xl mb-6 overflow-hidden flex items-center justify-center">
                   {project.image ? (
                     <Image
                       src={project.image}

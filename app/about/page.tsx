@@ -79,7 +79,7 @@ export default function AboutPage() {
     <>
       <DiamondGrid
         fadeOutDuration={1}
-        cellSize={30}
+        cellSize={50}
         borderWidth={0.5}
         crossWidth={0.6}
         themeAware={true}
