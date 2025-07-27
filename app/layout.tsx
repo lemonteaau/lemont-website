@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Doto } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provide";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import NavDock from "@/components/nav-dock";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,7 +57,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="fixed top-6 right-6 z-50">
+            <ThemeToggle />
+          </div>
           {children}
+          <NavDock />
         </ThemeProvider>
       </body>
     </html>

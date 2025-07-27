@@ -2,9 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import NavDock from "@/components/nav-dock";
 import GridBackground from "@/components/ui/grid-background";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Image from "next/image";
 import profile from "@/public/images/logo.png";
 import { FaLocationDot } from "react-icons/fa6";
@@ -79,12 +77,7 @@ export default function AboutPage() {
     <>
       <GridBackground cellSize={50} borderWidth={0.5} crossWidth={0.6} />
 
-      {/* Theme Toggle Button */}
-      <div className="fixed top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
-
-      <div className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto bg-background/80 backdrop-blur-sm p-8 shadow-lg border border-border">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div
@@ -258,8 +251,7 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </div>
-      <NavDock />
+      </main>
     </>
   );
 }

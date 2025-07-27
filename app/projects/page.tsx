@@ -1,8 +1,6 @@
 "use client";
 
-import NavDock from "@/components/nav-dock";
 import GridBackground from "@/components/ui/grid-background";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Link from "next/link";
 import { IoLogoGithub, IoOpenOutline } from "react-icons/io5";
 import Image from "next/image";
@@ -15,12 +13,7 @@ export default function Projects() {
     <>
       <GridBackground cellSize={50} borderWidth={0.5} crossWidth={0.6} />
 
-      {/* Theme Toggle Button */}
-      <div className="fixed top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
-
-      <div className="relative z-10 min-h-screen pt-16 pb-32">
+      <main className="relative z-10 min-h-screen pt-16 pb-32">
         <div className="container mx-auto px-6 max-w-6xl">
           {/* Header */}
           <div className="text-center mb-16">
@@ -121,8 +114,7 @@ export default function Projects() {
             ))}
           </div>
         </div>
-      </div>
-      <NavDock />
+      </main>
     </>
   );
 }
