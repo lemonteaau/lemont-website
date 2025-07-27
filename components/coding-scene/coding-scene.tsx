@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
+import { useTheme } from "next-themes";
 import { Desktop } from "./Desktop";
 import { Ground } from "./Ground";
 import { Lights } from "./Lights";
@@ -23,6 +24,8 @@ function SceneFallback() {
 }
 
 export function CodingScene() {
+  const { theme } = useTheme();
+
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       {/* Loading screen overlay */}
@@ -36,6 +39,10 @@ export function CodingScene() {
         gl={{ antialias: true }}
         onDragStart={(e) => e.preventDefault()}
       >
+        <color
+          attach="background"
+          args={[theme === "dark" ? "#121212" : "#ffffff"]}
+        />
         <Suspense fallback={<SceneFallback />}>
           <Lights />
 

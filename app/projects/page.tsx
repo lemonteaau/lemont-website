@@ -1,7 +1,7 @@
 "use client";
 
 import NavDock from "@/components/nav-dock";
-import DiamondGrid from "@/components/ui/diamond-grid";
+import GridBackground from "@/components/ui/grid-background";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Link from "next/link";
 import { IoLogoGithub, IoOpenOutline } from "react-icons/io5";
@@ -13,17 +13,7 @@ import { projects, Project } from "@/data/projects";
 export default function Projects() {
   return (
     <>
-      <DiamondGrid
-        fadeOutDuration={1}
-        cellSize={50}
-        borderWidth={0.5}
-        crossWidth={0.6}
-        themeAware={true}
-        skewX={0}
-        skewY={0}
-        scaleX={1}
-        scaleY={1}
-      />
+      <GridBackground cellSize={50} borderWidth={0.5} crossWidth={0.6} />
 
       {/* Theme Toggle Button */}
       <div className="fixed top-6 right-6 z-50">
