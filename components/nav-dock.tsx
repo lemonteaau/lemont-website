@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 import Dock from "@/components/ui/dock";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { VscHome } from "react-icons/vsc";
 import {
   IoBulbOutline,
@@ -12,7 +14,7 @@ import {
 } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 
-const items = [
+const baseItems = [
   {
     icon: <VscHome size={24} className="text-white/90" />,
     label: "Home",
@@ -54,7 +56,35 @@ const items = [
 
 export default function NavDock() {
   const [isDockVisible, setIsDockVisible] = useState(true);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const lastScrollY = useRef(0);
+  const { theme, setTheme } = useTheme();
+
+  const themeToggleItem = {
+    icon: <ThemeToggle variant="dock" />,
+    label: "Theme",
+    onClick: () => {
+      setTheme(theme === "dark" ? "light" : "dark");
+    },
+  };
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    };
+
+    checkScreenSize();
+
+    const handleResize = () => {
+      checkScreenSize();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,6 +111,9 @@ export default function NavDock() {
     };
   }, []);
 
+  const items = isLargeScreen ? [...baseItems, themeToggleItem] : baseItems;
+  const separators = isLargeScreen ? [2, 5] : [2];
+
   return (
     <div
       className={cn(
@@ -94,7 +127,7 @@ export default function NavDock() {
           panelHeight={68}
           baseItemSize={50}
           magnification={70}
-          separators={[2]}
+          separators={separators}
           separatorGap={1}
           distance={150}
         />
