@@ -5,132 +5,10 @@ import DiamondGrid from "@/components/ui/diamond-grid";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Link from "next/link";
 import { IoLogoGithub, IoOpenOutline } from "react-icons/io5";
-import {
-  SiNextdotjs,
-  SiReact,
-  SiTypescript,
-  SiTailwindcss,
-  SiPython,
-  SiElixir,
-  SiPhoenixframework,
-  SiSupabase,
-  SiCloudflare,
-  SiJavascript,
-  SiTampermonkey,
-  SiThreedotjs,
-} from "react-icons/si";
-import { FaAws } from "react-icons/fa";
 import Image from "next/image";
-import snapsnap from "@/public/images/snapsnappro_logo.svg";
-import artistArray from "@/public/images/artist_array_logo.png";
 import SplitText from "@/components/ui/split-text";
-import ozSupermarketBillSplitter from "@/public/images/ozSupermarketBillSplitter.png";
-import linkedinSeekJobAnalyzer from "@/public/images/linkedinSeekJobAnalyzer.png";
-import youtubeSpeedControlButton from "@/public/images/youtubeSpeedControlButton.png";
 import { cn } from "@/lib/utils";
-
-const projects = [
-  {
-    title: "Artist Array",
-    description:
-      "A web platform for the AI art community to share, discover, and utilise 'Artist Strings'—curated lists of artist names used to define specific art styles in AI image generation models.",
-    tech: [
-      { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
-      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-      { name: "Supabase", icon: <SiSupabase className="w-5 h-5" /> },
-      { name: "AWS", icon: <FaAws className="w-5 h-5" /> },
-      { name: "Cloudflare R2", icon: <SiCloudflare className="w-5 h-5" /> },
-    ],
-    github: "https://github.com/lemonteaau/artist-array",
-    demo: "https://artistarray.com",
-    image: artistArray,
-  },
-  {
-    title: "Snapsnap.pro Bundle Calculator",
-    description:
-      "A Next.js app for Marvel Snap players to calculate the cost of bundles. Features responsive UI and i18n support.",
-    tech: [
-      { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
-      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-    ],
-    github: "https://github.com/lemonteaau/snapsnap.pro",
-    demo: "https://snap-calculator.vercel.app/",
-    image: snapsnap,
-  },
-  {
-    title: "Korral Pro",
-    description:
-      "A web platform for event management with robust event planning workflows. Built using Phoenix/Elixir architecture with modern UI components.",
-    tech: [
-      { name: "Elixir", icon: <SiElixir className="w-5 h-5" /> },
-      { name: "Phoenix", icon: <SiPhoenixframework className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-    ],
-    image: "",
-  },
-  {
-    title: "OZ Supermarket Bill Splitter",
-    description: "A userscript to split bill for Woolies/Coles order.",
-    tech: [
-      { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
-      { name: "Userscript", icon: <SiTampermonkey className="w-5 h-5" /> },
-    ],
-    github: "https://github.com/lemonteaau/OZ-Supermarket-Bill-Splitter",
-    demo: "",
-    image: ozSupermarketBillSplitter,
-  },
-  {
-    title: "LinkedIn-SEEK Job Analyzer",
-    description:
-      "A Tampermonkey userscript that automatically analyzes LinkedIn and SEEK job postings to extract key information and requirements.",
-    tech: [
-      { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
-      { name: "Tampermonkey", icon: <SiTampermonkey className="w-5 h-5" /> },
-    ],
-    github: "https://github.com/lemonteaau/LinkedIn-SEEK-Job-Analyzer",
-    demo: "",
-    image: linkedinSeekJobAnalyzer,
-  },
-  {
-    title: "YouTube Speed Control Button",
-    description:
-      "A simple userscript that adds a speed control button to YouTube's video player interface.",
-    tech: [
-      { name: "JavaScript", icon: <SiJavascript className="w-5 h-5" /> },
-      { name: "Userscript", icon: <SiTampermonkey className="w-5 h-5" /> },
-    ],
-    github: "https://github.com/lemonteaau/YouTube-Speed-Control-Button",
-    demo: "",
-    image: youtubeSpeedControlButton,
-  },
-  {
-    title: "Personal Website",
-    description:
-      "Just a simple personal website which you are looking at right now.",
-    tech: [
-      { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
-      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
-      { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
-      { name: "Three.js", icon: <SiThreedotjs className="w-5 h-5" /> },
-    ],
-    github: "https://github.com/lemonteaau",
-    demo: "https://lemontea.xyz/",
-    image: "",
-  },
-  {
-    title: "Lab Management Tool",
-    description:
-      "A scheduling tool for University of Adelaide labs. Features efficient data structures, RESTful API integration, and comprehensive test coverage.",
-    tech: [
-      { name: "React", icon: <SiReact className="w-5 h-5" /> },
-      { name: "Python", icon: <SiPython className="w-5 h-5" /> },
-      { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
-    ],
-    image: "",
-  },
-];
+import { projects, Project } from "@/data/projects";
 
 export default function Projects() {
   return (
@@ -163,7 +41,7 @@ export default function Projects() {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project: Project, index: number) => (
               <div
                 key={index}
                 className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col"
@@ -209,15 +87,17 @@ export default function Projects() {
                   <div className="mt-auto space-y-6">
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-3">
-                      {project.tech.map((tech, techIndex) => (
-                        <div
-                          key={techIndex}
-                          className="flex items-center gap-2 bg-secondary/70 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground"
-                        >
-                          {tech.icon}
-                          <span>{tech.name}</span>
-                        </div>
-                      ))}
+                      {project.tech.map(
+                        (tech: Project["tech"][0], techIndex: number) => (
+                          <div
+                            key={techIndex}
+                            className="flex items-center gap-2 bg-secondary/70 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground"
+                          >
+                            {tech.icon}
+                            <span>{tech.name}</span>
+                          </div>
+                        )
+                      )}
                     </div>
 
                     {/* Action Buttons */}
