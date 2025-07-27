@@ -17,6 +17,7 @@ import {
   SiCloudflare,
   SiJavascript,
   SiTampermonkey,
+  SiThreedotjs,
 } from "react-icons/si";
 import { FaAws } from "react-icons/fa";
 import Image from "next/image";
@@ -26,6 +27,7 @@ import SplitText from "@/components/ui/split-text";
 import ozSupermarketBillSplitter from "@/public/images/ozSupermarketBillSplitter.png";
 import linkedinSeekJobAnalyzer from "@/public/images/linkedinSeekJobAnalyzer.png";
 import youtubeSpeedControlButton from "@/public/images/youtubeSpeedControlButton.png";
+import { cn } from "@/lib/utils";
 
 const projects = [
   {
@@ -111,6 +113,7 @@ const projects = [
       { name: "Next.js", icon: <SiNextdotjs className="w-5 h-5" /> },
       { name: "TypeScript", icon: <SiTypescript className="w-5 h-5" /> },
       { name: "Tailwind CSS", icon: <SiTailwindcss className="w-5 h-5" /> },
+      { name: "Three.js", icon: <SiThreedotjs className="w-5 h-5" /> },
     ],
     github: "https://github.com/lemonteaau",
     demo: "https://lemontea.xyz/",
@@ -166,7 +169,7 @@ export default function Projects() {
                 className="group bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col"
               >
                 {/* Project Image */}
-                <div className="w-full h-48 bg-white dark:bg-gray-900 rounded-xl mb-6 overflow-hidden flex items-center justify-center">
+                <div className="w-full h-48 bg-background border border-border rounded-xl mb-6 overflow-hidden flex items-center justify-center">
                   {project.image ? (
                     <Image
                       src={project.image}
@@ -176,8 +179,17 @@ export default function Projects() {
                       className="w-full h-full object-contain p-4"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br dark:bg-gray-900 dark:from-primary/0 dark:to-accent/0 from-primary/20 to-accent/20 flex items-center justify-center">
-                      <span className="text-muted-foreground font-doto text-4xl">
+                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center p-4">
+                      <span
+                        className={cn(
+                          "text-muted-foreground font-doto font-bold text-center leading-tight break-words",
+                          project.title.length > 15
+                            ? "text-xl sm:text-2xl md:text-3xl"
+                            : project.title.length > 10
+                            ? "text-2xl sm:text-3xl md:text-4xl"
+                            : "text-3xl sm:text-4xl md:text-5xl"
+                        )}
+                      >
                         {project.title}
                       </span>
                     </div>
