@@ -12,6 +12,7 @@ import { Character } from "./Character";
 import { Desk } from "./Desk";
 import { InteractiveGuide } from "./interactive-guide";
 import { LoadingScreen } from "./loading-screen";
+import { Mug } from "./Mug";
 
 // Fallback component for Suspense
 function SceneFallback() {
@@ -28,7 +29,6 @@ export function CodingScene() {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      {/* Loading screen overlay */}
       <LoadingScreen />
 
       <Canvas
@@ -51,7 +51,7 @@ export function CodingScene() {
           <Character position={[0, -0.08, -0.82]} />
           <Desktop position={[-0.3, 0.82, -0.43]} />
           <Ground />
-
+          <Mug position={[0.5, 0.899, 0.13]} />
           <OrbitControls
             enablePan={true}
             enableZoom={true}
