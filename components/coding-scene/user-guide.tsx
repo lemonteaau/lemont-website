@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { LuMouse, LuZoomIn } from "react-icons/lu";
 import { useEffect, useState } from "react";
 
-export function InteractiveGuide({ className }: { className?: string }) {
+export function UserGuide({ className }: { className?: string }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
