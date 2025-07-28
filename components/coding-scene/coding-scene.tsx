@@ -4,17 +4,16 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import { useTheme } from "next-themes";
-import { Desktop } from "./Desktop";
-import { Ground } from "./Ground";
-import { Lights } from "./Lights";
-import { Chair } from "./Chair";
-import { Character } from "./Character";
-import { Desk } from "./Desk";
-import { InteractiveGuide } from "./interactive-guide";
+import { Desktop } from "./desktop";
+import { Ground } from "./ground";
+import { Lights } from "./lights";
+import { Chair } from "./chair";
+import { Character } from "./character";
+import { Desk } from "./desk";
 import { LoadingScreen } from "./loading-screen";
-import { Mug } from "./Mug";
+import { Mug } from "./mug";
+import { UserGuide } from "./user-guide";
 
-// Fallback component for Suspense
 function SceneFallback() {
   return (
     <mesh>
@@ -67,7 +66,7 @@ export function CodingScene() {
         </Suspense>
       </Canvas>
 
-      <InteractiveGuide />
+      <UserGuide />
     </div>
   );
 }
