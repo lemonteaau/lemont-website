@@ -44,3 +44,6 @@ next-env.d.ts
 .open-next/
 cloudflare-env.d.ts
 .wrangler/
+
+# YoYo AI version control directory
+.yoyo/
