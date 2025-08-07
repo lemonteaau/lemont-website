@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import GridBackground from "@/components/ui/grid-background";
 import Image from "next/image";
@@ -17,6 +17,7 @@ export default function AboutPage() {
   const introRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const [activeSkill, setActiveSkill] = useState<string | null>(null);
 
   useEffect(() => {
     // Hero animation
@@ -155,7 +156,12 @@ export default function AboutPage() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                 {skills.languages.map((skill) => (
-                  <SkillCard key={skill.name} skill={skill} />
+                  <SkillCard
+                    key={skill.name}
+                    skill={skill}
+                    activeSkill={activeSkill}
+                    setActiveSkill={setActiveSkill}
+                  />
                 ))}
               </div>
             </div>
@@ -168,7 +174,12 @@ export default function AboutPage() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                 {skills.frameworks.map((skill) => (
-                  <SkillCard key={skill.name} skill={skill} />
+                  <SkillCard
+                    key={skill.name}
+                    skill={skill}
+                    activeSkill={activeSkill}
+                    setActiveSkill={setActiveSkill}
+                  />
                 ))}
               </div>
             </div>
@@ -181,7 +192,12 @@ export default function AboutPage() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                 {skills.tools.map((skill) => (
-                  <SkillCard key={skill.name} skill={skill} />
+                  <SkillCard
+                    key={skill.name}
+                    skill={skill}
+                    activeSkill={activeSkill}
+                    setActiveSkill={setActiveSkill}
+                  />
                 ))}
               </div>
             </div>
@@ -194,7 +210,12 @@ export default function AboutPage() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 {skills.soft.map((skill) => (
-                  <SkillCard key={skill.name} skill={skill} />
+                  <SkillCard
+                    key={skill.name}
+                    skill={skill}
+                    activeSkill={activeSkill}
+                    setActiveSkill={setActiveSkill}
+                  />
                 ))}
               </div>
             </div>

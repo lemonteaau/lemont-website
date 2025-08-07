@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
 
 interface SkillCardProps {
   skill: Skill;
+  activeSkill: string | null;
+  setActiveSkill: (name: string | null) => void;
 }
 
-export function SkillCard({ skill }: SkillCardProps) {
+export function SkillCard({ skill, activeSkill, setActiveSkill }: SkillCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === "system" ? resolvedTheme : theme;
@@ -81,7 +83,11 @@ export function SkillCard({ skill }: SkillCardProps) {
   };
 
   return (
-    <SkillTooltip skillName={skill.name}>
+    <SkillTooltip
+      skillName={skill.name}
+      activeSkill={activeSkill}
+      setActiveSkill={setActiveSkill}
+    >
       <div
         ref={cardRef}
         className="group relative bg-card/30 backdrop-blur-sm border border-border rounded-lg p-3 hover:shadow-lg transition-all duration-300 hover:scale-105"
