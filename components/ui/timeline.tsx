@@ -120,12 +120,9 @@ function TimelineHeader({
 }
 
 // TimelineIndicator
-interface TimelineIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
-  asChild?: boolean;
-}
+type TimelineIndicatorProps = React.HTMLAttributes<HTMLDivElement>;
 
 function TimelineIndicator({
-  asChild = false,
   className,
   children,
   ...props
