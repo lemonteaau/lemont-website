@@ -45,11 +45,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${doto.variable} antialiased`}
       >
         {/* Umami Analytics */}
-        <Script
-          src="https://umami.lemontea.xyz/script.js"
-          data-website-id="66f7c8be-a725-4626-a538-8ebbc5ee47d5"
-          strategy="afterInteractive"
-        />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            src="https://umami.lemontea.xyz/script.js"
+            data-website-id="66f7c8be-a725-4626-a538-8ebbc5ee47d5"
+            strategy="afterInteractive"
+          />
+        )}
 
         <ThemeProvider
           attribute="class"
