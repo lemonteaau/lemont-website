@@ -5,248 +5,197 @@ import gsap from "gsap";
 import GridBackground from "@/components/ui/grid-background";
 import Image from "next/image";
 import profile from "@/public/images/logo.png";
-import { FaLocationDot } from "react-icons/fa6";
+import { SkillCard } from "@/components/ui/skill-card";
+import { skills } from "@/data/skills";
+import { FaLocationDot, FaGitAlt } from "react-icons/fa6";
+import { SiFramer } from "react-icons/si";
+import { HiCodeBracket, HiUserGroup } from "react-icons/hi2";
+import TimelineComponent from "@/app/about/timeline";
 
 export default function AboutPage() {
-  const imageRef = useRef(null);
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const contentRef = useRef(null);
-  const subtitleRef2 = useRef(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.set(
-      [
-        imageRef.current,
-        titleRef.current,
-        subtitleRef.current,
-        subtitleRef2.current,
-        contentRef.current,
-      ],
-      {
-        force3D: true,
-        willChange: "transform, opacity",
-      }
-    );
+    // Hero animation
+    const hero = heroRef.current;
+    if (hero) {
+      gsap.fromTo(
+        hero.children,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+        }
+      );
+    }
 
-    const tl = gsap.timeline();
+    // Intro animation
+    const intro = introRef.current;
+    if (intro) {
+      gsap.fromTo(
+        intro,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.4,
+          ease: "power2.out",
+        }
+      );
+    }
 
-    tl.to(
-      [
-        imageRef.current,
-        titleRef.current,
-        subtitleRef.current,
-        subtitleRef2.current,
-      ],
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power1.out",
-        stagger: 0.2,
-        force3D: true,
-      }
-    ).to(
-      contentRef.current,
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power1.out",
-        force3D: true,
-        onComplete: () => {
-          gsap.set(
-            [
-              imageRef.current,
-              titleRef.current,
-              subtitleRef.current,
-              subtitleRef2.current,
-              contentRef.current,
-            ],
-            {
-              willChange: "auto",
-            }
-          );
-        },
-      },
-      "-=0.4"
-    );
+    // Timeline animation
+    const timeline = timelineRef.current;
+    if (timeline) {
+      gsap.fromTo(
+        timeline,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.6,
+          ease: "power2.out",
+        }
+      );
+    }
   }, []);
 
   return (
     <>
       <GridBackground cellSize={50} borderWidth={0.5} crossWidth={0.6} />
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto bg-background/80 backdrop-blur-sm p-8 shadow-lg border border-border">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div
-              ref={imageRef}
-              style={{ opacity: 0, transform: "translate3d(0, 50px, 0)" }}
-              className="w-48 h-48 relative flex-shrink-0"
-            >
-              <Image
-                src={profile}
-                alt="Profile picture"
-                fill
-                placeholder="blur"
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center md:text-left">
-              <h1
-                ref={titleRef}
-                style={{ opacity: 0, transform: "translate3d(0, 50px, 0)" }}
-                className="text-4xl font-bold text-foreground"
-              >
-                Terry Cheng
-              </h1>
-              <p
-                ref={subtitleRef}
-                style={{ opacity: 0, transform: "translate3d(0, 50px, 0)" }}
-                className="mt-2 text-lg text-muted-foreground"
-              >
-                Full-Stack Developer & Software Engineer
-              </p>
-              <div
-                ref={subtitleRef2}
-                style={{ opacity: 0, transform: "translate3d(0, 50px, 0)" }}
-                className="mt-4 space-y-2 text-sm text-muted-foreground"
-              >
-                <div className="flex items-center gap-2 justify-center md:justify-start">
-                  <FaLocationDot className="text-foreground" />
-                  <p>Adelaide, SA 5000</p>
+      <main className="container mx-auto px-4 py-12 mb-20">
+        {/* Hero Section */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-2 lg:gap-6">
+          <div ref={heroRef} className="w-full max-w-xl mx-auto mb-8 lg:mb-16">
+            <div className="bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-md rounded-2xl shadow-xl border border-border p-6 sm:p-8 md:p-12">
+              <div className="flex flex-col md:flex-row items-center gap-6 sm:gap-8">
+                <div className="relative group">
+                  <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-background">
+                    <Image
+                      src={profile}
+                      alt="Profile picture"
+                      fill
+                      placeholder="blur"
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div
-            ref={contentRef}
-            style={{ opacity: 0, transform: "translate3d(0, 30px, 0)" }}
-            className="mt-8 space-y-6 text-foreground/80 leading-relaxed"
-          >
-            <div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                About Me
-              </h3>
-              <p>
-                Adaptive full-stack software engineer with hands-on experience
-                building and delivering robust web applications using
-                JavaScript/TypeScript and Elixir ecosystems. Demonstrated
-                ability to quickly learn new technologies and solve complex
-                problems in agile environments. Eager to apply my passion for
-                creating high-quality, user-centric software to drive business
-                growth.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Working Experience
-              </h3>
-              <div className="space-y-3">
-                <div>
-                  <h4 className="font-medium text-foreground">
-                    Software Developer Intern -- Morialta Software
-                  </h4>
-                  <p className="text-muted-foreground">July 2024 – Feb 2025</p>
-                  <div className="space-y-1 text-muted-foreground">
-                    <p>
-                      • Contributed to core features across two tech stacks,
-                      delivering 32% of project tickets with Next.js and 20%
-                      with Phoenix/Elixir
-                    </p>
-                    <p>
-                      • Engineered critical data-entry forms with complex
-                      validation logic and handled core back-end business
-                      functionalities.
-                    </p>
-                    <p>
-                      • Navigated a major tech pivot by mastering Phoenix/Elixir
-                      within one month, building essential UI components and
-                      form logic from scratch.
-                    </p>
-                    <p>
-                      • Implemented Cypress automated testing and resolved bugs
-                      that blocked the CI/CD pipeline, ensuring development
-                      continuity.
-                    </p>
-                    <p>
-                      • Enhanced application quality through code reviews and
-                      UI/UX suggestions while collaborating effectively in a
-                      5-person agile team.
-                    </p>
+
+                <div className="text-center md:text-left flex-1">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
+                    Terry Cheng
+                  </h1>
+                  <p className="text-lg sm:text-xl text-muted-foreground mb-4">
+                    Full-Stack Developer & Software Engineer
+                  </p>
+                  <div className="flex items-center gap-2 justify-center md:justify-start text-muted-foreground text-sm sm:text-base">
+                    <FaLocationDot className="text-primary" />
+                    <span>Adelaide, SA 5000</span>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
+          {/* Experience & Education Timeline */}
+          <div ref={timelineRef} className="max-w-4xl mx-auto mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                My Journey
+              </h2>
+              <div className="w-24 h-1 bg-gray-700 dark:bg-green-400 mx-auto rounded-full"></div>
+            </div>
+            <div className="flex justify-center">
+              <TimelineComponent />
+            </div>
+          </div>
+        </div>
+
+        {/* About Me Section */}
+        <div ref={introRef} className="max-w-4xl mx-auto mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              About Me
+            </h2>
+            <div className="w-24 h-1 bg-gray-700 dark:bg-green-400 mx-auto rounded-full"></div>
+          </div>
+          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-8 border border-border shadow-lg">
+            <p className="text-lg text-foreground/80 leading-relaxed text-center">
+              Adaptive full-stack software engineer with hands-on experience
+              building robust web applications. Passionate about creating
+              high-quality, user-centric software that drives business growth.
+            </p>
+          </div>
+        </div>
+
+        {/* Skills Section */}
+        <div ref={skillsRef} className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              Technical Skills
+            </h2>
+            <div className="w-24 h-1 bg-gray-700 dark:bg-green-400 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="space-y-8">
+            {/* Programming Languages */}
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Technical Skills
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <HiCodeBracket className="text-primary" />
+                Languages & Databases
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-medium text-foreground mb-2">
-                    Languages
-                  </h4>
-                  <p className="text-sm">
-                    JavaScript, TypeScript, Node.js, Elixir, Python, C++, HTML,
-                    CSS, SQL
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-foreground mb-2">
-                    Frameworks & Libraries
-                  </h4>
-                  <p className="text-sm">
-                    React, Next.js, React Router, Phoenix, Tailwind CSS, CSS
-                    Modules, Cypress, Preline UI, shadcn/ui, Material UI, Framer
-                    Motion, GSAP, React Three Fiber
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-foreground mb-2">
-                    Tools & Platforms
-                  </h4>
-                  <p className="text-sm">
-                    Git, GitHub, GitHub Actions, Cloudflare, Vercel, Drizzle
-                    ORM, tRPC, RESTful, Fly.io, webpack, Vite, Shell, Docker,
-                    Supabase, Umami, react-i18next, Jira, Figma, n8n
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-foreground mb-2">
-                    Soft Skills
-                  </h4>
-                  <p className="text-sm">
-                    Problem solving, teamwork, communication, stakeholder
-                    management, adaptability
-                  </p>
-                </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                {skills.languages.map((skill) => (
+                  <SkillCard key={skill.name} skill={skill} />
+                ))}
               </div>
             </div>
 
+            {/* Frameworks */}
             <div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Education
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <SiFramer className="text-primary" />
+                Frameworks & Libraries
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h4 className="font-medium text-foreground">
-                    Master of Computing and Innovation
-                  </h4>
-                  <p className="text-muted-foreground">
-                    University of Adelaide • Feb 2023 – Nov 2024
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-medium text-foreground">
-                    Bachelor of Business Administration
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Shanghai University • Sep 2018 – Jun 2022
-                  </p>
-                </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                {skills.frameworks.map((skill) => (
+                  <SkillCard key={skill.name} skill={skill} />
+                ))}
+              </div>
+            </div>
+
+            {/* Tools */}
+            <div>
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <FaGitAlt className="text-primary" />
+                Tools & Platforms
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                {skills.tools.map((skill) => (
+                  <SkillCard key={skill.name} skill={skill} />
+                ))}
+              </div>
+            </div>
+
+            {/* Soft Skills */}
+            <div>
+              <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <HiUserGroup className="text-primary" />
+                Soft Skills
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                {skills.soft.map((skill) => (
+                  <SkillCard key={skill.name} skill={skill} />
+                ))}
               </div>
             </div>
           </div>
