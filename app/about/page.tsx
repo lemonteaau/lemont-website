@@ -17,6 +17,7 @@ export default function AboutPage() {
   const introRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
+  const skillsTitleRef = useRef<HTMLDivElement>(null);
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
 
   useEffect(() => {
@@ -63,6 +64,22 @@ export default function AboutPage() {
           y: 0,
           duration: 0.6,
           delay: 0.6,
+          ease: "power2.out",
+        }
+      );
+    }
+
+    // Technical Skills title animation
+    const titleContainer = skillsTitleRef.current;
+    if (titleContainer) {
+      gsap.fromTo(
+        titleContainer.children,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.4,
           ease: "power2.out",
         }
       );
@@ -134,7 +151,7 @@ export default function AboutPage() {
               aria-hidden="true"
               className="pointer-events-none absolute top-1 left-2 md:-top-1 md:left-1 text-8xl md:text-9xl leading-none font-serif text-primary/20 select-none"
             >
-              “
+              {"\u201C"}
             </div>
             <blockquote className="relative text-lg md:text-2xl text-foreground/90 leading-relaxed text-left">
               I'm a full‑stack engineer who believes tech should serve everyone.
@@ -146,7 +163,7 @@ export default function AboutPage() {
 
         {/* Skills Section */}
         <div ref={skillsRef} className="max-w-6xl mx-auto">
-          <div className="text-center mb-6">
+          <div ref={skillsTitleRef} className="text-center mb-6">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Technical Skills
             </h2>

@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, cloneElement, isValidElement } from "react";
-import gsap from "gsap";
+import { useRef, cloneElement, isValidElement } from "react";
 import { useTheme } from "next-themes";
 import { Skill } from "@/data/skills";
 import { SkillTooltip } from "./skill-tooltip";
@@ -13,38 +12,14 @@ interface SkillCardProps {
   setActiveSkill: (name: string | null) => void;
 }
 
-export function SkillCard({ skill, activeSkill, setActiveSkill }: SkillCardProps) {
+export function SkillCard({
+  skill,
+  activeSkill,
+  setActiveSkill,
+}: SkillCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === "system" ? resolvedTheme : theme;
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    gsap.set(card, { opacity: 0, y: 30 });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: "power2.out",
-            });
-            observer.unobserve(card);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(card);
-
-    return () => observer.disconnect();
-  }, []);
 
   // Clone icon and apply color based on theme
   const getColoredIcon = () => {
@@ -90,7 +65,7 @@ export function SkillCard({ skill, activeSkill, setActiveSkill }: SkillCardProps
     >
       <div
         ref={cardRef}
-        className="group relative bg-card/30 backdrop-blur-sm border border-border rounded-lg p-3 hover:shadow-lg transition-all duration-300 hover:scale-105"
+        className="group relative bg-card/30 backdrop-blur-sm border border-border rounded-lg p-3 hover:shadow-lg transition-transform duration-300 hover:scale-105"
       >
         <div className="flex flex-col items-center gap-2 text-center">
           <div
