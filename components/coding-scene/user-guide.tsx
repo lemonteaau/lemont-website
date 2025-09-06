@@ -25,8 +25,8 @@ export function UserGuide({ className }: { className?: string }) {
             : "opacity-0 scale-95 -translate-y-2"
         )}
       >
-        <div className="relative bg-black/80 dark:bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3 shadow-2xl">
-          <div className="space-y-2 text-white dark:text-white">
+        <div className="relative bg-white/90 dark:bg-black/60 backdrop-blur-sm border border-black/10 dark:border-white/20 rounded-xl px-4 py-3 shadow-xl">
+          <div className="space-y-2 text-black dark:text-white">
             <div className="flex items-center gap-2">
               <LuMouse className="text-lg" />
               <span className="text-sm font-medium">Drag to rotate</span>
