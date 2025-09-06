@@ -11,7 +11,7 @@ import { Chair } from "./chair";
 import { Character } from "./character";
 import { Desk } from "./desk";
 import { LoadingScreen } from "./loading-screen";
-import { Mug } from "./mug";
+import { Cup } from "./cup";
 import { UserGuide } from "./user-guide";
 
 function SceneFallback() {
@@ -50,7 +50,7 @@ export function CodingScene() {
           <Character position={[0, -0.08, -0.82]} />
           <Desktop position={[-0.3, 0.82, -0.43]} />
           <Ground />
-          <Mug position={[0.5, 0.899, 0.13]} />
+          <Cup position={[0.5, 0.899, 0.13]} />
           <OrbitControls
             enablePan={true}
             enableZoom={true}

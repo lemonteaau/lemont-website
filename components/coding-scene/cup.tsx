@@ -1,6 +1,6 @@
 "use client";
 
-export function Mug({ position = [0, 0, 0] as [number, number, number] }) {
+export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
   return (
     <group position={position} scale={0.85}>
       {/* Top Rim */}
