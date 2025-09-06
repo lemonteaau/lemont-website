@@ -22,6 +22,7 @@ const doto = Doto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lemontea.xyz"),
   title: "Terry Cheng",
   description: "Terry Cheng's personal website",
   openGraph: {
