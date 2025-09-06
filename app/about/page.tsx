@@ -145,16 +145,16 @@ export default function AboutPage() {
             </h2>
             <div className="w-24 h-1 bg-gray-700 dark:bg-green-400 mx-auto rounded-full"></div>
           </div>
-          <figure className="relative overflow-hidden bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm rounded-2xl px-12 md:px-16 py-6 md:py-8 border border-border">
+          <figure className="relative overflow-hidden bg-gradient-to-br from-card/90 to-card/60 backdrop-blur-sm rounded-2xl pl-12 px-10 md:px-16 py-6 md:py-8 border border-border">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute top-1 left-2 md:-top-1 md:left-1 text-8xl md:text-9xl leading-none font-serif text-primary/20 select-none"
             >
               “
             </div>
-            <blockquote className="relative text-xl md:text-2xl text-foreground/90 leading-relaxed text-left">
-              A full‑stack engineer who believes tech should serve everyone. I
-              build simple, accessible tools that turn complex ideas into
+            <blockquote className="relative text-lg md:text-2xl text-foreground/90 leading-relaxed text-left">
+              I'm a full‑stack engineer who believes tech should serve everyone.
+              I build simple, accessible tools that turn complex ideas into
               everyday usefulness.
             </blockquote>
           </figure>
