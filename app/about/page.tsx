@@ -154,9 +154,9 @@ export default function AboutPage() {
               {"\u201C"}
             </div>
             <blockquote className="relative text-lg md:text-2xl text-foreground/90 leading-relaxed text-left">
-              I'm a full‑stack engineer who believes tech should serve everyone.
-              I build simple, accessible tools that turn complex ideas into
-              everyday usefulness.
+              I&rsquo;m a full‑stack engineer who believes tech should serve
+              everyone. I build simple, accessible tools that turn complex ideas
+              into everyday usefulness.
             </blockquote>
           </figure>
         </div>
