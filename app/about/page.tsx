@@ -67,22 +67,6 @@ export default function AboutPage() {
         }
       );
     }
-
-    // Skills animation
-    const skills = skillsRef.current;
-    if (skills) {
-      gsap.fromTo(
-        skills,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: 0.8,
-          ease: "power2.out",
-        }
-      );
-    }
   }, []);
 
   return (
