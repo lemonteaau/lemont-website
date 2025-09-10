@@ -10,7 +10,7 @@ import { skills } from "@/data/skills";
 import { FaLocationDot, FaGitAlt } from "react-icons/fa6";
 import { SiFramer } from "react-icons/si";
 import { HiCodeBracket, HiUserGroup } from "react-icons/hi2";
-import TimelineComponent from "@/app/about/timeline";
+import AboutTimeline from "@/components/about-timeline";
 
 export default function AboutPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -133,7 +133,7 @@ export default function AboutPage() {
               <div className="w-24 h-1 bg-gray-700 dark:bg-green-400 mx-auto rounded-full"></div>
             </div>
             <div className="flex justify-center">
-              <TimelineComponent />
+              <AboutTimeline />
             </div>
           </div>
         </div>

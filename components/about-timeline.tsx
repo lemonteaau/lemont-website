@@ -34,7 +34,7 @@ const items = [
   },
 ];
 
-export default function TimelineComponent() {
+export default function AboutTimeline() {
   return (
     <Timeline defaultValue={3} className="mx-auto">
       {items.map((item) => (
