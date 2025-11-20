@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Group } from "three";
+import { Group, Mesh, Material } from "three";
 import { RoundedBox, Text } from "@react-three/drei";
 
 function FloatingZ({ delay = 0 }) {
@@ -15,7 +15,8 @@ function FloatingZ({ delay = 0 }) {
       ref.current.position.x = Math.sin(alpha * 4) * 0.05;
       ref.current.scale.setScalar(1 - alpha * 0.3);
       if (ref.current.children[0]) {
-        const material = (ref.current.children[0] as any).material;
+        const mesh = ref.current.children[0] as Mesh;
+        const material = mesh.material as Material;
         if (material) {
           material.opacity = Math.max(0, 1 - alpha);
           material.transparent = true;
