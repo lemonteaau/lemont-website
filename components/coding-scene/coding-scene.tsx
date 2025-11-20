@@ -13,6 +13,7 @@ import { Desk } from "./desk";
 import { LoadingScreen } from "./loading-screen";
 import { Cup } from "./cup";
 import { UserGuide } from "./user-guide";
+import { BackgroundElements } from "./background-elements";
 
 function SceneFallback() {
   return (
@@ -43,6 +44,7 @@ export function CodingScene() {
           args={[theme === "dark" ? "#121212" : "#ffffff"]}
         />
         <Suspense fallback={<SceneFallback />}>
+          <BackgroundElements />
           <Lights />
 
           <Desk position={[0, 0, 0.19]} />
