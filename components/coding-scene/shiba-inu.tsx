@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Group, Mesh, Material } from "three";
 import { RoundedBox, Text } from "@react-three/drei";
@@ -34,6 +34,32 @@ function FloatingZ({ delay = 0 }) {
   );
 }
 
+function FloatingHeart({ onComplete }: { onComplete: () => void }) {
+  const ref = useRef<Group>(null);
+  const [startTime] = useState(Date.now());
+
+  useFrame(() => {
+    const elapsed = (Date.now() - startTime) / 1000;
+    if (elapsed > 1.5) {
+      onComplete();
+      return;
+    }
+    if (ref.current) {
+      ref.current.position.y = 0.4 + elapsed * 0.6;
+      ref.current.position.x = Math.sin(elapsed * 10) * 0.05;
+      ref.current.scale.setScalar(Math.max(0, 1 - elapsed / 1.5));
+    }
+  });
+
+  return (
+    <group ref={ref} position={[0, 0.4, 0.2]}>
+      <Text fontSize={0.1} color="#ff6b6b" font="/fonts/Doto-Bold.ttf">
+        ♥
+      </Text>
+    </group>
+  );
+}
+
 export function ShibaInu({
   position = [0, 0, 0],
   scale = 1,
@@ -47,23 +73,82 @@ export function ShibaInu({
 }) {
   const group = useRef<Group>(null);
   const bodyRef = useRef<Group>(null);
+  const headRef = useRef<Group>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [hearts, setHearts] = useState<{ id: number }[]>([]);
+  const [lastPetTime, setLastPetTime] = useState(0);
+  const [bounce, setBounce] = useState(0);
+
+  const isAwake = !isSleeping || Date.now() - lastPetTime < 3000;
 
   useFrame((state) => {
     if (bodyRef.current) {
       // Subtle breathing animation
+      const breathY = Math.sin(state.clock.elapsedTime * 1.5) * 0.002;
+
       bodyRef.current.scale.y =
         1 + Math.sin(state.clock.elapsedTime * 1.5) * 0.02;
-      bodyRef.current.position.y =
-        Math.sin(state.clock.elapsedTime * 1.5) * 0.002;
+      bodyRef.current.position.y = breathY;
+    }
+
+    if (headRef.current) {
+      if (bounce > 0) {
+        // "摇头晃脑" - Head shake animation
+        const t = state.clock.elapsedTime;
+        // Z-axis: Head tilting left/right
+        headRef.current.rotation.z = Math.sin(t * 15) * bounce * 0.4;
+        // Y-axis: Head turning left/right
+        headRef.current.rotation.y = Math.cos(t * 12) * bounce * 0.2;
+        // X-axis: Slight nodding (base is 0.2)
+        headRef.current.rotation.x = 0.2 + Math.sin(t * 20) * bounce * 0.1;
+      } else {
+        // Reset to base rotation
+        headRef.current.rotation.z = 0;
+        headRef.current.rotation.y = 0;
+        headRef.current.rotation.x = 0.2;
+      }
+    }
+
+    if (bounce > 0) {
+      setBounce((prev) => Math.max(0, prev - 0.015));
+    }
+
+    // Update cursor
+    if (isHovered) {
+      document.body.style.cursor = "pointer";
+    } else {
+      document.body.style.cursor = "auto";
     }
   });
+
+  const handlePet = useCallback(() => {
+    setLastPetTime(Date.now());
+    setBounce(1);
+    const id = Date.now();
+    setHearts((prev) => [...prev, { id }]);
+  }, []);
+
+  const removeHeart = useCallback((id: number) => {
+    setHearts((prev) => prev.filter((h) => h.id !== id));
+  }, []);
 
   const orange = "#e39c52";
   const white = "#f5f5f5";
   const noseColor = "#2a2a2a";
 
   return (
-    <group ref={group} position={position} scale={scale} rotation={rotation}>
+    <group
+      ref={group}
+      position={position}
+      scale={scale}
+      rotation={rotation}
+      onPointerOver={() => setIsHovered(true)}
+      onPointerOut={() => setIsHovered(false)}
+      onClick={(e) => {
+        e.stopPropagation();
+        handlePet();
+      }}
+    >
       <group ref={bodyRef}>
         {/* Body Main */}
         <RoundedBox
@@ -100,7 +185,7 @@ export function ShibaInu({
       </group>
 
       {/* Head Group - Resting on floor/paws */}
-      <group position={[0, 0.18, 0.35]} rotation={[0.2, 0, 0]}>
+      <group ref={headRef} position={[0, 0.18, 0.35]} rotation={[0.2, 0, 0]}>
         {/* Head Main */}
         <RoundedBox args={[0.22, 0.22, 0.22]} radius={0.04}>
           <meshStandardMaterial color={orange} />
@@ -134,7 +219,7 @@ export function ShibaInu({
         </RoundedBox>
 
         {/* Eyes */}
-        {isSleeping ? (
+        {!isAwake ? (
           // Closed eyes (Sleeping)
           <>
             <mesh position={[-0.05, 0.02, 0.11]} rotation={[0, 0, -0.1]}>
@@ -222,14 +307,22 @@ export function ShibaInu({
         </RoundedBox>
       </group>
 
-      {/* Sleeping Zzzs */}
-      {isSleeping && (
+      {/* Sleeping Zzzs - Only if NOT awake */}
+      {!isAwake && (
         <>
           <FloatingZ delay={0} />
           <FloatingZ delay={1} />
           <FloatingZ delay={2} />
         </>
       )}
+
+      {/* Hearts from petting */}
+      {hearts.map((heart) => (
+        <FloatingHeart
+          key={heart.id}
+          onComplete={() => removeHeart(heart.id)}
+        />
+      ))}
     </group>
   );
 }
