@@ -14,6 +14,7 @@ import { LoadingScreen } from "./loading-screen";
 import { Cup } from "./cup";
 import { UserGuide } from "./user-guide";
 import { BackgroundElements } from "./background-elements";
+import { ShibaInu } from "./shiba-inu";
 
 function SceneFallback() {
   return (
@@ -50,6 +51,12 @@ export function CodingScene() {
           <Desk position={[0, 0, 0.19]} />
           <Chair position={[0, 0, -0.7]} />
           <Character position={[0, -0.08, -0.82]} />
+          <ShibaInu
+            position={[0.6, 0, -0.6]}
+            rotation={[0, -0.8, 0]}
+            scale={0.8}
+            isSleeping={theme === "dark"}
+          />
           <Desktop position={[-0.3, 0.82, -0.43]} />
           <Ground />
           <Cup position={[0.5, 0.899, 0.13]} />
