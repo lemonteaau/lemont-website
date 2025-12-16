@@ -15,6 +15,7 @@ import { Cup } from "./cup";
 import { UserGuide } from "./user-guide";
 import { BackgroundElements } from "./background-elements";
 import { ShibaInu } from "./shiba-inu";
+import { TerrainScene } from "./terrain-scene";
 
 function SceneFallback() {
   return (
@@ -42,9 +43,10 @@ export function CodingScene() {
       >
         <color
           attach="background"
-          args={[theme === "dark" ? "#121212" : "#ffffff"]}
+          args={[theme === "dark" ? "#050505" : "#ffffff"]}
         />
         <Suspense fallback={<SceneFallback />}>
+          {theme === "dark" && <TerrainScene />}
           <BackgroundElements />
           <Lights />
 
