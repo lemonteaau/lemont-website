@@ -26,6 +26,8 @@ export type DockItemData = {
   icon: React.ReactNode;
   /** The label text shown on hover */
   label: React.ReactNode;
+  /** Accessible label for screen readers */
+  ariaLabel?: string;
   /** Next.js route href for internal links */
   href?: string;
   /** Callback function executed when the item is clicked (for external links) */
@@ -73,6 +75,7 @@ type DockItemProps = {
   href?: string;
   onClick?: () => void;
   isExternal?: boolean;
+  ariaLabel?: string;
   mouseX: MotionValue;
   spring: SpringOptions;
   distance: number;
@@ -86,6 +89,7 @@ function DockItem({
   href,
   onClick,
   isExternal = false,
+  ariaLabel,
   mouseX,
   spring,
   distance,
@@ -146,9 +150,6 @@ function DockItem({
       onLayoutAnimationStart={updateElementPosition}
       onAnimationStart={updateElementPosition}
       className={itemClassName}
-      tabIndex={0}
-      role="button"
-      aria-haspopup="true"
     >
       {Children.map(children, (child) =>
         // @ts-expect-error - Passing isHovered to child components that expect it
@@ -159,9 +160,21 @@ function DockItem({
 
   if (href && !isExternal) {
     return (
-      <Link href={href} className="inline-block">
+      <Link href={href} className="inline-block" aria-label={ariaLabel}>
         {itemContent}
       </Link>
+    );
+  }
+
+  if (onClick && !href) {
+    return (
+      <button
+        onClick={onClick}
+        className="inline-block cursor-pointer bg-transparent border-none p-0"
+        aria-label={ariaLabel}
+      >
+        {itemContent}
+      </button>
     );
   }
 
@@ -172,6 +185,7 @@ function DockItem({
       className="inline-block cursor-pointer"
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
+      aria-label={ariaLabel}
     >
       {itemContent}
     </a>
@@ -317,6 +331,7 @@ export default function Dock({
           onClick={item.onClick}
           isExternal={item.isExternal}
           className={item.className}
+          ariaLabel={item.ariaLabel || (typeof item.label === 'string' ? item.label : undefined)}
           mouseX={mouseX}
           spring={spring}
           distance={distance}

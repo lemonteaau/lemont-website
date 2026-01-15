@@ -113,7 +113,7 @@ export function AboutContent() {
                   Full-Stack Developer & Software Engineer
                 </p>
                 <div className="flex items-center gap-2 justify-center md:justify-start text-muted-foreground text-sm sm:text-base">
-                  <FaLocationDot className="text-primary" />
+                  <FaLocationDot className="text-primary" aria-hidden="true" />
                   <span>Adelaide, SA 5000</span>
                 </div>
               </div>
@@ -169,7 +169,7 @@ export function AboutContent() {
           {/* Programming Languages */}
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-              <HiCodeBracket className="text-primary" />
+              <HiCodeBracket className="text-primary" aria-hidden="true" />
               Languages & Databases
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
@@ -187,7 +187,7 @@ export function AboutContent() {
           {/* Frameworks */}
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-              <SiFramer className="text-primary" />
+              <SiFramer className="text-primary" aria-hidden="true" />
               Frameworks & Libraries
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -205,7 +205,7 @@ export function AboutContent() {
           {/* Tools */}
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-              <FaGitAlt className="text-primary" />
+              <FaGitAlt className="text-primary" aria-hidden="true" />
               Tools & Platforms
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -223,7 +223,7 @@ export function AboutContent() {
           {/* Soft Skills */}
           <div>
             <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-              <HiUserGroup className="text-primary" />
+              <HiUserGroup className="text-primary" aria-hidden="true" />
               Soft Skills
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

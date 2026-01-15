@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
 interface GridBackgroundProps {
@@ -21,6 +21,18 @@ const GridBackground: React.FC<GridBackgroundProps> = ({
   crossWidth = 0.5,
 }) => {
   const { theme } = useTheme();
+  const [viewport, setViewport] = useState({ width: 1920, height: 1080 });
+
+  useEffect(() => {
+    setViewport({ width: window.innerWidth, height: window.innerHeight });
+
+    const handleResize = () => {
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const colors = useMemo(() => {
     const isDark = theme === "dark";
@@ -30,14 +42,10 @@ const GridBackground: React.FC<GridBackgroundProps> = ({
       cross: crossColor || (isDark ? "#555555" : "#999999"),
     };
   }, [theme, tileColor, borderColor, crossColor]);
-  const { cols, rows, totalGroups } = useMemo(() => {
-    const viewportWidth =
-      typeof window !== "undefined" ? window.innerWidth : 1920;
-    const viewportHeight =
-      typeof window !== "undefined" ? window.innerHeight : 1080;
 
-    const neededCols = Math.ceil(viewportWidth / cellSize);
-    const neededRows = Math.ceil(viewportHeight / cellSize);
+  const { cols, rows, totalGroups } = useMemo(() => {
+    const neededCols = Math.ceil(viewport.width / cellSize);
+    const neededRows = Math.ceil(viewport.height / cellSize);
 
     const cols = neededCols % 2 === 0 ? neededCols + 1 : neededCols;
     const rows = neededRows % 2 === 0 ? neededRows + 1 : neededRows;
@@ -47,7 +55,7 @@ const GridBackground: React.FC<GridBackgroundProps> = ({
       rows: Math.min(rows, 14),
       totalGroups: Math.min(cols * rows, 1500),
     };
-  }, [cellSize]);
+  }, [cellSize, viewport]);
 
   const getCellBorders = useMemo(
     () => (cellIndex: number, groupIndex: number) => {

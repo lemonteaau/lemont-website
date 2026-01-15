@@ -43,6 +43,7 @@ export function ThemeToggle({
     return (
       <div className="relative flex items-center justify-center w-6 h-6">
         <IoSunny
+          aria-hidden="true"
           className={`w-5 h-5 text-white/90 absolute transition-all duration-300 ${
             theme === "dark"
               ? "translate-y-0 opacity-100"
@@ -50,6 +51,7 @@ export function ThemeToggle({
           }`}
         />
         <IoMoon
+          aria-hidden="true"
           className={`w-5 h-5 text-white/90 transition-all duration-300 ${
             theme === "dark"
               ? "-translate-y-8 opacity-0"
@@ -68,6 +70,7 @@ export function ThemeToggle({
     >
       <div className="relative overflow-hidden">
         <IoSunny
+          aria-hidden="true"
           className={`w-5 h-5 text-white/90 absolute transition-all duration-300 ${
             theme === "dark"
               ? "translate-y-0 opacity-100"
@@ -75,6 +78,7 @@ export function ThemeToggle({
           }`}
         />
         <IoMoon
+          aria-hidden="true"
           className={`w-5 h-5 text-white/90 transition-all duration-300 ${
             theme === "dark"
               ? "-translate-y-8 opacity-0"

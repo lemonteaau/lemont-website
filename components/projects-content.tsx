@@ -72,7 +72,7 @@ export function ProjectsContent() {
                         key={techIndex}
                         className="flex items-center gap-2 bg-secondary/70 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground"
                       >
-                        {tech.icon}
+                        <span aria-hidden="true">{tech.icon}</span>
                         <span>{tech.name}</span>
                       </div>
                     )
@@ -88,7 +88,7 @@ export function ProjectsContent() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors font-medium"
                     >
-                      <IoLogoGithub className="w-4 h-4" />
+                      <IoLogoGithub className="w-4 h-4" aria-hidden="true" />
                       Code
                     </Link>
                   )}
@@ -99,7 +99,7 @@ export function ProjectsContent() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-lg hover:bg-secondary/80 transition-colors font-medium"
                     >
-                      <IoOpenOutline className="w-4 h-4" />
+                      <IoOpenOutline className="w-4 h-4" aria-hidden="true" />
                       Demo
                     </Link>
                   )}

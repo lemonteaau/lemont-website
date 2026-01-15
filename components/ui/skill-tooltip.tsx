@@ -20,7 +20,7 @@ export function SkillTooltip({
   const [showDesktopTooltip, setShowDesktopTooltip] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLButtonElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,9 +77,10 @@ export function SkillTooltip({
     : showDesktopTooltip;
 
   return (
-    <div
+    <button
       ref={containerRef}
-      className="relative inline-block"
+      type="button"
+      className="relative inline-block text-left appearance-none bg-transparent border-none p-0 m-0 cursor-default"
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -127,6 +128,6 @@ export function SkillTooltip({
           </div>
         </div>
       )}
-    </div>
+    </button>
   );
 }

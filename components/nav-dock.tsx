@@ -16,38 +16,38 @@ import { cn } from "@/lib/utils";
 
 const baseItems = [
   {
-    icon: <VscHome size={24} className="text-white/90" />,
+    icon: <VscHome size={24} className="text-white/90" aria-hidden="true" />,
     label: "Home",
     href: "/",
   },
 
   {
-    icon: <IoBulbOutline size={24} className="text-white/90" />,
+    icon: <IoBulbOutline size={24} className="text-white/90" aria-hidden="true" />,
     label: "Projects",
     href: "/projects",
   },
   {
-    icon: <IoPersonOutline size={24} className="text-white/90" />,
+    icon: <IoPersonOutline size={24} className="text-white/90" aria-hidden="true" />,
     label: "About",
     href: "/about",
   },
 
   {
-    icon: <IoMailOutline size={24} className="text-white/90" />,
+    icon: <IoMailOutline size={24} className="text-white/90" aria-hidden="true" />,
     label: "Contact",
     isExternal: true,
     href: "mailto:terrycheng2k@outlook.com",
   },
 
   {
-    icon: <IoLogoLinkedin size={24} className="text-white/90" />,
+    icon: <IoLogoLinkedin size={24} className="text-white/90" aria-hidden="true" />,
     label: "Linkedin",
     isExternal: true,
     href: "https://www.linkedin.com/in/terry-cheng-789972274",
   },
 
   {
-    icon: <IoLogoGithub size={24} className="text-white/90" />,
+    icon: <IoLogoGithub size={24} className="text-white/90" aria-hidden="true" />,
     label: "Github",
     isExternal: true,
     href: "https://github.com/lemonteaau",

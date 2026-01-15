@@ -28,11 +28,11 @@ export function UserGuide({ className }: { className?: string }) {
         <div className="relative bg-white/90 dark:bg-black/60 backdrop-blur-sm border border-black/10 dark:border-white/20 rounded-xl px-4 py-3 shadow-xl">
           <div className="space-y-2 text-black dark:text-white">
             <div className="flex items-center gap-2">
-              <LuMouse className="text-lg" />
+              <LuMouse className="text-lg" aria-hidden="true" />
               <span className="text-sm font-medium">Drag to rotate</span>
             </div>
             <div className="flex items-center gap-2">
-              <LuZoomIn className="text-lg" />
+              <LuZoomIn className="text-lg" aria-hidden="true" />
               <span className="text-sm font-medium">Scroll to zoom</span>
             </div>
           </div>
