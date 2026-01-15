@@ -5,6 +5,8 @@ import {
   FaGitAlt,
   FaDocker,
   FaFigma,
+  FaPhp,
+  FaLaravel,
 } from "react-icons/fa6";
 import {
   SiJavascript,
@@ -19,11 +21,10 @@ import {
   SiFramer,
   SiPhoenixframework,
   SiReactrouter,
-  SiMui,
+  SiExpo,
   SiGithub,
   SiGithubactions,
   SiTrpc,
-  SiCssmodules,
   SiWebpack,
   SiShadcnui,
   SiVite,
@@ -31,7 +32,6 @@ import {
   SiJira,
   SiCplusplus,
   SiHtml5,
-  SiCss3,
   SiPostgresql,
   SiMysql,
   SiDrizzle,
@@ -85,7 +85,7 @@ export const skills = {
       color: "#00599C",
     },
     { name: "HTML", icon: <SiHtml5 className="w-6 h-6" />, color: "#E34C26" },
-    { name: "CSS", icon: <SiCss3 className="w-6 h-6" />, color: "#1572B6" },
+    { name: "PHP", icon: <FaPhp className="w-6 h-6" />, color: "#777BB4" },
     {
       name: "PostgreSQL",
       icon: <SiPostgresql className="w-6 h-6" />,
@@ -116,9 +116,13 @@ export const skills = {
       color: "#06B6D4",
     },
     {
-      name: "CSS Modules",
-      icon: <SiCssmodules className="w-7 h-7" />,
-      color: "#000000",
+      name: "WXT",
+      icon: (
+        <svg className="w-6 h-6" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M348.608 492C384.905 492 414.329 462.576 414.329 426.279V360.557H426.279C462.576 360.557 492 331.132 492 294.835C492 258.538 462.576 229.114 426.279 229.114H414.329V163.392C414.329 127.095 384.905 97.6709 348.608 97.6709H282.886V85.7215C282.886 49.4245 253.462 20 217.165 20C180.868 20 151.443 49.4245 151.443 85.7215V97.6709H85.7215C49.4245 97.6709 20 127.095 20 163.392V229.114H31.9494C68.2464 229.114 97.6709 258.538 97.6709 294.835C97.6709 331.132 68.2464 360.557 31.9494 360.557H20V492H151.443V480.051C151.443 443.754 180.868 414.329 217.165 414.329C253.462 414.329 282.886 443.754 282.886 480.051V492H348.608Z" stroke="currentColor" strokeWidth="40"/>
+        </svg>
+      ),
+      color: "#67D55E",
     },
     {
       name: "Cypress",
@@ -126,13 +130,9 @@ export const skills = {
       color: "#04C38E",
     },
     {
-      name: "Preline UI",
-      icon: (
-        <div className="w-6 h-6 bg-primary/20 rounded flex items-center justify-center text-xs font-bold">
-          PU
-        </div>
-      ),
-      color: "#7C3AED",
+      name: "Laravel",
+      icon: <FaLaravel className="w-6 h-6" />,
+      color: "#FF2D20",
     },
     {
       name: "shadcn/ui",
@@ -140,23 +140,19 @@ export const skills = {
       color: "#000000",
     },
     {
-      name: "Material UI",
-      icon: <SiMui className="w-6 h-6" />,
-      color: "#007FFF",
+      name: "Expo",
+      icon: <SiExpo className="w-6 h-6" />,
+      color: "#000020",
+    },
+    {
+      name: "React Native",
+      icon: <FaReact className="w-6 h-6" />,
+      color: "#61DAFB",
     },
     {
       name: "Framer Motion",
       icon: <SiFramer className="w-6 h-6" />,
       color: "#0055FF",
-    },
-    {
-      name: "GSAP",
-      icon: (
-        <div className="w-6 h-6 bg-primary/20 rounded flex items-center justify-center text-xs font-bold">
-          GS
-        </div>
-      ),
-      color: "#88CE02",
     },
   ],
   tools: [
