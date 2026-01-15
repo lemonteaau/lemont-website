@@ -65,12 +65,12 @@ export function TerrainScene({
         const noiseEffect = n * noiseStrength * noiseScale * 2;
 
         // Optional deep cuts/canyons further out
-        let canyonDrop = 0;
+        const canyonDrop = 0;
         // if (n < -0.3 && t > 0.2) canyonDrop = -5 * t;
 
         // Final Y
         // Start exactly at -0.05 (just above occlusion) to be visible immediately
-        let y = -0.05 + baseHeight + noiseEffect + canyonDrop;
+        const y = -0.05 + baseHeight + noiseEffect + canyonDrop;
 
         points.push([x, y, z]);
       }

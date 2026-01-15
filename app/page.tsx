@@ -1,9 +1,5 @@
-import { CodingScene } from "@/components/coding-scene/coding-scene";
+import { HomeScene } from "@/components/home-scene";
 
 export default function Home() {
-  return (
-    <>
-      <CodingScene />
-    </>
-  );
+  return <HomeScene />;
 }
