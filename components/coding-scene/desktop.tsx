@@ -13,6 +13,10 @@ export function Desktop({ position = [0, 0, 0] as [number, number, number] }) {
   useEffect(() => {
     if (scene) {
       scene.traverse((child) => {
+        if ((child as any).isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
         if (child.type === "Mesh" && "material" in child) {
           const mesh = child as THREE.Mesh;
           if (mesh.material && "emissive" in mesh.material) {

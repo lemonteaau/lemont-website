@@ -11,10 +11,18 @@ export function Character({
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
+    // Enable shadows for all meshes in the scene
+    scene.traverse((child) => {
+      if ((child as any).isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+
     if (actions?.["CharacterArmature|Sitting"]) {
       actions["CharacterArmature|Sitting"].play();
     }
-  }, [actions]);
+  }, [actions, scene]);
 
   return (
     <group ref={group} position={position} dispose={null}>

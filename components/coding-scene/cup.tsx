@@ -8,6 +8,8 @@ export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
         position={[0, 0.085, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
         renderOrder={4}
+        castShadow
+        receiveShadow
       >
         <ringGeometry args={[0.054, 0.062, 16]} />
         <meshStandardMaterial
@@ -21,7 +23,7 @@ export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
       </mesh>
 
       {/* Outer Wall */}
-      <mesh position={[0, 0, 0]} renderOrder={3}>
+      <mesh position={[0, 0, 0]} renderOrder={3} castShadow receiveShadow>
         <cylinderGeometry args={[0.062, 0.052, 0.169, 16, 1, true]} />
         <meshStandardMaterial
           color="#ffffff"
@@ -35,7 +37,7 @@ export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
       </mesh>
 
       {/* Inner Wall */}
-      <mesh position={[0, 0, 0]} renderOrder={1}>
+      <mesh position={[0, 0, 0]} renderOrder={1} castShadow receiveShadow>
         <cylinderGeometry args={[0.053, 0.042, 0.169, 16, 1, true]} />
         <meshStandardMaterial
           color="#ffffff"
@@ -49,7 +51,7 @@ export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
       </mesh>
 
       {/* Tea */}
-      <mesh position={[0, -0.024, 0]} renderOrder={2}>
+      <mesh position={[0, -0.024, 0]} renderOrder={2} castShadow receiveShadow>
         <cylinderGeometry args={[0.0515, 0.0405, 0.15, 16, 1, false]} />
         <meshStandardMaterial
           color="#8f5f1b"
@@ -66,6 +68,8 @@ export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
         position={[0, -0.086, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
         renderOrder={0}
+        castShadow
+        receiveShadow
       >
         <circleGeometry args={[0.0415, 16]} />
         <meshStandardMaterial
@@ -80,7 +84,12 @@ export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
       </mesh>
 
       {/* Bottom Rim */}
-      <mesh position={[0, -0.086, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <mesh
+        position={[0, -0.086, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        castShadow
+        receiveShadow
+      >
         <ringGeometry args={[0.044, 0.052, 16]} />
         <meshStandardMaterial
           color="#ffffff"
@@ -96,6 +105,8 @@ export function Cup({ position = [0, 0, 0] as [number, number, number] }) {
         position={[-0.018, 0.03, -0.026]}
         rotation={[-0.2, 0, 0.25]}
         renderOrder={6}
+        castShadow
+        receiveShadow
       >
         <cylinderGeometry args={[0.005, 0.005, 0.22, 16]} />
         <meshStandardMaterial color="#ffe000" roughness={0.4} metalness={0.1} />

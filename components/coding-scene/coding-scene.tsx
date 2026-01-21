@@ -34,6 +34,9 @@ export function CodingScene() {
       <LoadingScreen />
 
       <Canvas
+        shadows
+        dpr={[1, 2]}
+        performance={{ min: 0.5 }}
         camera={{
           position: [3, 2, 3],
           fov: 30,

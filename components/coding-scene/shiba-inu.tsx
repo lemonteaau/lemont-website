@@ -79,6 +79,17 @@ export function ShibaInu({
   const [lastPetTime, setLastPetTime] = useState(0);
   const [bounce, setBounce] = useState(0);
 
+  useEffect(() => {
+    if (group.current) {
+      group.current.traverse((child) => {
+        if ((child as any).isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+    }
+  }, []);
+
   const isAwake = !isSleeping || Date.now() - lastPetTime < 3000;
 
   useFrame((state) => {
