@@ -79,17 +79,6 @@ export function ShibaInu({
   const [lastPetTime, setLastPetTime] = useState(0);
   const [bounce, setBounce] = useState(0);
 
-  useEffect(() => {
-    if (group.current) {
-      group.current.traverse((child) => {
-        if ((child as any).isMesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
-    }
-  }, []);
-
   const isAwake = !isSleeping || Date.now() - lastPetTime < 3000;
 
   useFrame((state) => {
@@ -166,6 +155,8 @@ export function ShibaInu({
           args={[0.35, 0.25, 0.5]}
           radius={0.05}
           position={[0, 0.125, 0]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={orange} />
         </RoundedBox>
@@ -175,6 +166,8 @@ export function ShibaInu({
           args={[0.34, 0.15, 0.4]}
           radius={0.05}
           position={[0, 0.08, 0.02]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={white} />
         </RoundedBox>
@@ -184,12 +177,14 @@ export function ShibaInu({
           args={[0.28, 0.2, 0.1]}
           radius={0.05}
           position={[0, 0.15, 0.22]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={white} />
         </RoundedBox>
 
         {/* Tail (Simple white sphere - attached to body group to move with breathing) */}
-        <mesh position={[0, 0.22, -0.22]}>
+        <mesh position={[0, 0.22, -0.22]} castShadow receiveShadow>
           <sphereGeometry args={[0.06]} />
           <meshStandardMaterial color={white} />
         </mesh>
@@ -198,7 +193,7 @@ export function ShibaInu({
       {/* Head Group - Resting on floor/paws */}
       <group ref={headRef} position={[0, 0.18, 0.35]} rotation={[0.2, 0, 0]}>
         {/* Head Main */}
-        <RoundedBox args={[0.22, 0.22, 0.22]} radius={0.04}>
+        <RoundedBox args={[0.22, 0.22, 0.22]} radius={0.04} castShadow receiveShadow>
           <meshStandardMaterial color={orange} />
         </RoundedBox>
 
@@ -207,6 +202,8 @@ export function ShibaInu({
           args={[0.18, 0.12, 0.1]}
           radius={0.02}
           position={[0, -0.04, 0.08]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={white} />
         </RoundedBox>
@@ -216,6 +213,8 @@ export function ShibaInu({
           args={[0.08, 0.08, 0.1]}
           radius={0.02}
           position={[0, -0.02, 0.12]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={white} />
         </RoundedBox>
@@ -225,6 +224,8 @@ export function ShibaInu({
           args={[0.04, 0.03, 0.02]}
           radius={0.01}
           position={[0, 0.01, 0.17]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={noseColor} />
         </RoundedBox>
@@ -258,22 +259,22 @@ export function ShibaInu({
 
         {/* Ears */}
         <group position={[-0.08, 0.11, 0]}>
-          <mesh rotation={[0, 0, 0.2]}>
+          <mesh rotation={[0, 0, 0.2]} castShadow receiveShadow>
             <coneGeometry args={[0.04, 0.08, 4]} />
             <meshStandardMaterial color={orange} />
           </mesh>
-          <mesh position={[0, -0.01, 0.01]} rotation={[0, 0, 0.2]}>
+          <mesh position={[0, -0.01, 0.01]} rotation={[0, 0, 0.2]} castShadow receiveShadow>
             <coneGeometry args={[0.025, 0.05, 4]} />
             <meshStandardMaterial color={white} />
           </mesh>
         </group>
 
         <group position={[0.08, 0.11, 0]}>
-          <mesh rotation={[0, 0, -0.2]}>
+          <mesh rotation={[0, 0, -0.2]} castShadow receiveShadow>
             <coneGeometry args={[0.04, 0.08, 4]} />
             <meshStandardMaterial color={orange} />
           </mesh>
-          <mesh position={[0, -0.01, 0.01]} rotation={[0, 0, -0.2]}>
+          <mesh position={[0, -0.01, 0.01]} rotation={[0, 0, -0.2]} castShadow receiveShadow>
             <coneGeometry args={[0.025, 0.05, 4]} />
             <meshStandardMaterial color={white} />
           </mesh>
@@ -282,37 +283,41 @@ export function ShibaInu({
 
       {/* Paws - Front */}
       <group position={[-0.1, 0.05, 0.3]} rotation={[0, 0.2, 0]}>
-        <RoundedBox args={[0.08, 0.08, 0.15]} radius={0.03}>
+        <RoundedBox args={[0.08, 0.08, 0.15]} radius={0.03} castShadow receiveShadow>
           <meshStandardMaterial color={white} />
         </RoundedBox>
       </group>
       <group position={[0.1, 0.05, 0.3]} rotation={[0, -0.2, 0]}>
-        <RoundedBox args={[0.08, 0.08, 0.15]} radius={0.03}>
+        <RoundedBox args={[0.08, 0.08, 0.15]} radius={0.03} castShadow receiveShadow>
           <meshStandardMaterial color={white} />
         </RoundedBox>
       </group>
 
       {/* Paws - Back (Tucked) */}
       <group position={[-0.15, 0.05, -0.2]} rotation={[0, -0.5, 0]}>
-        <RoundedBox args={[0.1, 0.1, 0.2]} radius={0.04}>
+        <RoundedBox args={[0.1, 0.1, 0.2]} radius={0.04} castShadow receiveShadow>
           <meshStandardMaterial color={orange} />
         </RoundedBox>
         <RoundedBox
           args={[0.08, 0.06, 0.05]}
           radius={0.02}
           position={[0, -0.02, 0.1]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={white} />
         </RoundedBox>
       </group>
       <group position={[0.15, 0.05, -0.2]} rotation={[0, 0.5, 0]}>
-        <RoundedBox args={[0.1, 0.1, 0.2]} radius={0.04}>
+        <RoundedBox args={[0.1, 0.1, 0.2]} radius={0.04} castShadow receiveShadow>
           <meshStandardMaterial color={orange} />
         </RoundedBox>
         <RoundedBox
           args={[0.08, 0.06, 0.05]}
           radius={0.02}
           position={[0, -0.02, 0.1]}
+          castShadow
+          receiveShadow
         >
           <meshStandardMaterial color={white} />
         </RoundedBox>
