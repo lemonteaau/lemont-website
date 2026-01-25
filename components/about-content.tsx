@@ -186,7 +186,7 @@ export function AboutContent() {
             {"\u201C"}
           </div>
           <blockquote className="relative text-lg md:text-2xl text-foreground/90 leading-relaxed text-left">
-            lemontea is my Overwatch ID I created in 2016. I was 16, and Vita Lemon Tea was very popular in China, just like Overwatch did. Ten years have passed, I no longer play that game, and I don't drink lemon tea much, but I still wanna keep this ID and the good memories with it.
+            lemontea is my Overwatch ID I created in 2016. I was 16, and Vita Lemon Tea was very popular in China, just like Overwatch did. Ten years have passed, I no longer play that game, and I don&apos;t drink lemon tea much, but I still wanna keep this ID and the good memories with it.
           </blockquote>
         </figure>
       </div>
