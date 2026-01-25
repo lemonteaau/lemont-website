@@ -69,7 +69,7 @@ export function AboutContent() {
           duration: 0.8,
           stagger: 0.2,
           ease: "power2.out",
-        }
+        },
       );
     }
 
@@ -85,7 +85,7 @@ export function AboutContent() {
           duration: 0.6,
           delay: 0.4,
           ease: "power2.out",
-        }
+        },
       );
     }
 
@@ -101,7 +101,7 @@ export function AboutContent() {
           duration: 0.6,
           delay: 0.6,
           ease: "power2.out",
-        }
+        },
       );
     }
 
@@ -117,7 +117,7 @@ export function AboutContent() {
           duration: 0.6,
           stagger: 0.4,
           ease: "power2.out",
-        }
+        },
       );
     }
   }, []);
@@ -144,7 +144,10 @@ export function AboutContent() {
 
               <div className="text-center md:text-left flex-1 min-w-0">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text min-h-[2.5rem] sm:min-h-[3rem] md:min-h-[3.5rem]">
-                  <span className="whitespace-nowrap">{displayText}<span className="animate-pulse text-primary">|</span></span>
+                  <span className="whitespace-nowrap">
+                    {displayText}
+                    <span className="animate-pulse text-primary">|</span>
+                  </span>
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground mb-4">
                   Full-Stack Developer & Software Engineer
@@ -185,8 +188,12 @@ export function AboutContent() {
           >
             {"\u201C"}
           </div>
-          <blockquote className="relative text-lg md:text-2xl text-foreground/90 leading-relaxed text-left">
-            lemontea is my Overwatch ID I created in 2016. I was 16, and Vita Lemon Tea was very popular in China, just like Overwatch did. Ten years have passed, I no longer play that game, and I don&apos;t drink lemon tea much, but I still wanna keep this ID and the good memories with it.
+          <blockquote className="relative text-lg md:text-xl text-foreground/90 leading-relaxed text-left">
+            lemontea is my Overwatch ID I created in 2016. Vita Lemon Tea was
+            very popular in China at that time, just like Overwatch did. Ten
+            years have passed, I no longer play that game, and I don&apos;t
+            drink lemon tea much, but I still want to keep this ID and the good
+            memories with it.
           </blockquote>
         </figure>
       </div>
