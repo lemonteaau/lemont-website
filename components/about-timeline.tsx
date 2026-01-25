@@ -14,7 +14,7 @@ const items = [
   {
     id: 1,
     date: "July 2024 – Feb 2025",
-    title: "Software Developer Intern",
+    title: "Software Developer",
     description: "Morialta Software",
     icon: FaBriefcase,
   },
