@@ -11,6 +11,8 @@ import { SiFramer } from "react-icons/si";
 import { HiCodeBracket, HiUserGroup } from "react-icons/hi2";
 import AboutTimeline from "@/components/about-timeline";
 
+const NAMES = ["Terry Cheng", "lemontea"];
+
 export function AboutContent() {
   const heroRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
@@ -18,6 +20,41 @@ export function AboutContent() {
   const skillsRef = useRef<HTMLDivElement>(null);
   const skillsTitleRef = useRef<HTMLDivElement>(null);
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
+
+  // Typewriter effect state
+  const [displayText, setDisplayText] = useState("");
+  const [nameIndex, setNameIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Typewriter effect
+  useEffect(() => {
+    const currentName = NAMES[nameIndex];
+    const typeSpeed = isDeleting ? 80 : 120;
+    const pauseTime = 2000; // Pause when name is fully typed
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (displayText.length < currentName.length) {
+          setDisplayText(currentName.slice(0, displayText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        // Deleting
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          // Finished deleting, switch to next name
+          setIsDeleting(false);
+          setNameIndex((prev) => (prev + 1) % NAMES.length);
+        }
+      }
+    }, typeSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, nameIndex]);
 
   useEffect(() => {
     // Hero animation
@@ -105,9 +142,9 @@ export function AboutContent() {
                 </div>
               </div>
 
-              <div className="text-center md:text-left flex-1">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">
-                  Terry Cheng
+              <div className="text-center md:text-left flex-1 min-w-0">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text min-h-[2.5rem] sm:min-h-[3rem] md:min-h-[3.5rem]">
+                  <span className="whitespace-nowrap">{displayText}<span className="animate-pulse text-primary">|</span></span>
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground mb-4">
                   Full-Stack Developer & Software Engineer
@@ -149,9 +186,7 @@ export function AboutContent() {
             {"\u201C"}
           </div>
           <blockquote className="relative text-lg md:text-2xl text-foreground/90 leading-relaxed text-left">
-            I&rsquo;m a full-stack engineer who believes tech should serve
-            everyone. I build simple, accessible tools that turn complex ideas
-            into everyday usefulness.
+            lemontea is my Overwatch ID I created in 2016. I was 16, and Vita Lemon Tea was very popular in China, just like Overwatch did. Ten years have passed, I no longer play that game, and I don't drink lemon tea much, but I still wanna keep this ID and the good memories with it.
           </blockquote>
         </figure>
       </div>
