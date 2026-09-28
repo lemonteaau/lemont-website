@@ -1,38 +1,55 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Doto } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import { Imbue, Newsreader, DM_Mono } from "next/font/google";
 import Script from "next/script";
-import { ThemeProvider } from "@/components/theme-provide";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import NavDock from "@/components/nav-dock";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const imbue = Imbue({
   subsets: ["latin"],
+  axes: ["opsz"],
+  variable: "--font-imbue",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const newsreader = Newsreader({
   subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-newsreader",
 });
 
-const doto = Doto({
+const dmMono = DM_Mono({
   subsets: ["latin"],
-  variable: "--font-doto",
+  weight: ["400", "500"],
+  variable: "--font-dm-mono",
 });
+
+const description =
+  "Terry Cheng (lemontea), full-stack developer and software engineer in Adelaide, South Australia. Projects, open-source contributions and profile.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lemontea.xyz"),
-  title: "Terry Cheng",
-  description: "Terry Cheng's personal website",
+  title: {
+    default: "Terry Cheng — lemontea",
+    template: "%s — Terry Cheng",
+  },
+  description,
   openGraph: {
-    title: "Terry Cheng",
-    description: "Terry Cheng's personal website",
+    title: "Terry Cheng — lemontea",
+    description,
     url: "https://lemontea.xyz",
-    siteName: "Terry Cheng",
+    siteName: "lemontea",
     images: [{ url: "og-image.png" }],
   },
   authors: [{ name: "Terry Cheng", url: "https://lemontea.xyz" }],
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f2ede2" },
+    { media: "(prefers-color-scheme: dark)", color: "#15140f" },
+  ],
 };
 
 export default function RootLayout({
@@ -41,15 +58,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#050505" media="(prefers-color-scheme: dark)" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${doto.variable} antialiased`}
-      >
-        {/* Umami Analytics */}
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${imbue.variable} ${newsreader.variable} ${dmMono.variable}`}
+    >
+      <body id="top">
         {process.env.NODE_ENV === "production" && (
           <Script
             src="https://umami.lemontea.xyz/script.js"
@@ -57,18 +71,21 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
         )}
-
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed top-6 right-6 z-50 md:hidden">
-            <ThemeToggle />
-          </div>
-          {children}
-          <NavDock />
+          <a
+            href="#main"
+            className="kicker sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-lemon focus:px-3 focus:py-2 focus:text-on-lemon"
+          >
+            Skip to content
+          </a>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>

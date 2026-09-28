@@ -47,3 +47,6 @@ cloudflare-env.d.ts
 
 # YoYo AI version control directory
 .yoyo/
+
+# Old 3D site, kept locally
+.archive/
